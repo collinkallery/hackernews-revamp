@@ -26,8 +26,6 @@ During the third quarter of our time at Turing School of Software & Design, we w
 > Visit [http://localhost:3000](http://localhost:3000) to view it in the browser
 >
 > This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
->
-> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Challenges
 
