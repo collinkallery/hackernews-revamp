@@ -1,68 +1,36 @@
+# Hacker News - UI & UX Revamp
+
+## Abstract
+
+During the third quarter of our time at Turing School of Software & Design, we were given a very loosely-structured project called "Stretch", where we needed to implement our recently-learned skills in React and the React Testing Library, but also teach ourselves and implement a new technology that has not yet been taught to us. We were given the "Miscellaneous" category, where we were given the opportunity to delve into styled components and more advanced accessibility tools. We were also told to find an API and create a project around it, so we chose the Hacker News API. Hacker News is a widely used news outlet for stories related to technology. It is used by developers, project managers, hackers, and anyone who may be interested in brushing up on current events in the world of tech. The desktop application, however, seems to create conflict between developers, with many claiming its simplistic UI makes it easy to navigate with minimal distractions, while others claim it's a UI eyesore, with little organization and no visually-pleasing elements. For our stretch project, we decided to revamp the UI and UX of Hacker News using React, with a strong focus on styled components and refined accessibility. 
+
+## Specific Objectives
+
+1. The application cannot simply be a display of data - there needs to be some way for the user to work with or manipulate the data. 
+2. The application should be a multi-page application using React Router. 
+3. The use of at least one external API.
+4. Use of Styled Components. 
+5. 100% passing accessibility testing using an accessibility analyzer like A11y or Axe. 
+6. Keep state based components to a minimum and leverage more functional components.
+7. Use a modular architecture for your application file structure.
+8. Write tests for React components and some asynchronous functionality.
+
+## Installation
+
+> Clone down this repo into an empty directory on your local machine
+>
+> Run `npm install` in your teminal to install the project's dependencies 
+>
+> Run `npm start` to run the application in development mode
+>
+> Visit [http://localhost:3000](http://localhost:3000) to view it in the browser
+>
+> This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Challenges
 
-In the project directory, you can run:
+## Looking Ahead
 
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## The NEW Hacker News In Action
