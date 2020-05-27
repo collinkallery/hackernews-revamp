@@ -2,6 +2,13 @@ import React, {Component} from 'react';
 import './App.css';
 import {fetchPromises, fetchStories} from '../../apiCalls'
 import ArticleContainer from '../ArticleContainer/ArticleContainer'
+import styled from 'styled-components'
+
+const AppStyled = styled.div`
+  width: 100%;
+  height: 100%;
+  border: 2px solid blue;
+`
 
 class App extends Component {
   constructor() {
@@ -44,9 +51,9 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
-        <ArticleContainer />
-      </div>
+      <AppStyled>
+        <ArticleContainer homePageStories={this.state.homePageStories}/>
+      </AppStyled>
     );
   }
 }
