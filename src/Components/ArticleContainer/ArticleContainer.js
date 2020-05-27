@@ -1,7 +1,6 @@
-import  React from 'react';
-import './ArticleContainer.css';
-import ArticlePreview from '../ArticlePreview/ArticlePreview'
-import styled from 'styled-components'
+import React from "react";
+import ArticlePreview from "../ArticlePreview/ArticlePreview";
+import styled from "styled-components";
 
 const ArticleContainerStyled = styled.div`
   display: flex;
@@ -12,19 +11,13 @@ const ArticleContainerStyled = styled.div`
   width: 100%;
   height: 100%;
   border: 2px solid black;
-`
+`;
 const ArticleContainer = (props) => {
-  const articlesToDisplay = props.homePageStories.map(story => {
-    return (
-      <ArticlePreview {...story}/>
-    )
-  })
+  const articlesToDisplay = props.homePageStories.map((story) => {
+    return <ArticlePreview {...story} />;
+  });
 
-  return (    
-    <ArticleContainerStyled>
-      {articlesToDisplay}
-    </ArticleContainerStyled>
-  )
-}
+  return <ArticleContainerStyled>{articlesToDisplay}</ArticleContainerStyled>;
+};
 
 export default ArticleContainer;
