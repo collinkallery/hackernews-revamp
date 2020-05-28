@@ -1,7 +1,6 @@
-import React, {Component, useState, useEffect} from 'react';
-import './ArticleContainer.css';
-import ArticlePreview from '../ArticlePreview/ArticlePreview';
-import styled from 'styled-components';
+import React from "react";
+import ArticlePreview from "../ArticlePreview/ArticlePreview";
+import styled from "styled-components";
 
 const ArticleContainerStyled = styled.div`
   display: flex;

@@ -1,10 +1,7 @@
-import  React from 'react';
-import './ArticleExpanded.css';
+import React from "react";
 
 const ArticleExpanded = () => {
-  return (
-    ''
-  )
-}
+  return "";
+};
 
 export default ArticleExpanded;

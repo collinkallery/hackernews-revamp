@@ -1,53 +1,57 @@
-import React, {Component} from 'react';
-import './App.css';
-import {fetchPromises, fetchStories} from '../../apiCalls'
-import ArticleContainer from '../ArticleContainer/ArticleContainer'
-import styled from 'styled-components'
+import React, { Component } from "react";
+import { fetchPromises, fetchStories } from "../../apiCalls";
+import ArticleContainer from "../ArticleContainer/ArticleContainer";
+import NavBar from "../NavBar/NavBar";
+import styled, { ThemeProvider } from "styled-components";
+import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
 
-const AppStyled = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  border: 2px solid blue;
-`
+`;
 
 class App extends Component {
   constructor() {
-    super()
-    this.state ={
+    super();
+    this.state = {
       newStoryIDs: [],
       bestStoryIDs: [],
       topStoryIDs: [],
-      homePageStories: []
-    }
+      homePageStories: [],
+    };
   }
 
   componentDidMount = () => {
-    fetchPromises('newstories')
-      .then(data => this.setState({newStoryIDs: data}))
-      .then(newData => this.getStories(this.state.newStoryIDs[0]))
-      .catch(err => console.error(err))
+    fetchPromises("newstories")
+      .then((data) => this.setState({ newStoryIDs: data }))
+      .then((newData) => this.getStories(this.state.newStoryIDs[0]))
+      .catch((err) => console.error(err));
 
-    fetchPromises('beststories')
-      .then(data => this.setState({bestStoryIDs: data}))
-      .then(newData => this.getStories(this.state.bestStoryIDs[0]))
-      .catch(err => console.error(err))
+    fetchPromises("beststories")
+      .then((data) => this.setState({ bestStoryIDs: data }))
+      .then((newData) => this.getStories(this.state.bestStoryIDs[0]))
+      .catch((err) => console.error(err));
 
-    fetchPromises('topstories')
-      .then(data => this.setState({topStoryIDs: data}))
-      .then(newData => this.getStories(this.state.topStoryIDs[0]))
-      .catch(err => console.error(err))
-  }
+    fetchPromises("topstories")
+      .then((data) => this.setState({ topStoryIDs: data }))
+      .then((newData) => this.getStories(this.state.topStoryIDs[0]))
+      .catch((err) => console.error(err));
+  };
 
   getStories = async (id) => {
-    const story = await fetchStories(id)
-    this.setState({homePageStories: [...this.state.homePageStories, story]})
-  }
+    const story = await fetchStories(id);
+    this.setState({ homePageStories: [...this.state.homePageStories, story] });
+  };
 
   render() {
     return (
-      <AppStyled>
-        <ArticleContainer homePageStories={this.state.homePageStories}/>
-      </AppStyled>
+      <ThemeProvider theme={darkTheme}>
+        <Wrapper>
+          <NavBar />
+          <ArticleContainer homePageStories={this.state.homePageStories} />
+          <GlobalStyle />
+        </Wrapper>
+      </ThemeProvider>
     );
   }
 }

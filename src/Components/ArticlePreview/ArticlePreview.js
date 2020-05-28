@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './ArticlePreview.css';
 import ArticleExpanded from '../ArticleExpanded/ArticleExpanded'
 import styled from 'styled-components'
 import {fetchImage} from '../../apiCalls'
