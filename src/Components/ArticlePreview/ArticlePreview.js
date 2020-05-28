@@ -17,16 +17,21 @@ const StoryCard = styled.div`
 const ArticlePreview = (props) => {
 
   const [image, setImage] = useState(null);
+  const [description, setDescription] = useState(null);
 
   fetchImage(props.url)
     .then(data => {
-      return setImage(data.hybridGraph.image)
+      return (
+        setImage(data.hybridGraph.image),
+        setDescription(data.hybridGraph.description)
+      )
     })
 
   return (
       <StoryCard>
         <p>{props.title}</p>
         <img src={image} />
+        <p id={props.id}>{description}</p>
       </StoryCard>
   )
 }
