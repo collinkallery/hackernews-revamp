@@ -14,10 +14,14 @@ const ArticleContainerStyled = styled.div`
 `
 
 const ArticleContainer = (props) => {
+
   const articlesToDisplay = props.homePageStories.map(story => {
-    console.log('story', story);
+    console.log('topic', story);
     return (
-      <ArticlePreview {...story} key={story.id}/>
+      <section>
+        <p>{story.topic} Story</p>
+        <ArticlePreview {...story} key={story.id}/>
+      </section>
     )
   })
   return (
