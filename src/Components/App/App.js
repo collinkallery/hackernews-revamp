@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { fetchPromises, fetchStories } from "../../apiCalls";
-import ArticleContainer from "../ArticleContainer/ArticleContainer";
+import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
 import NavBar from "../NavBar/NavBar";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
@@ -63,7 +63,7 @@ class App extends Component {
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar />
-          <ArticleContainer homePageStories={this.state.homePageStories} />
+          <HomeArticleContainer homePageStories={this.state.homePageStories} />
           <GlobalStyle />
         </Wrapper>
       </ThemeProvider>
