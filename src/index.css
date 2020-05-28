@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+* {
+  font-family: 'News Cycle', sans-serif;
+}
+
 html,
 body,
 #root {

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { fetchPromises, fetchStories } from "../../apiCalls";
 import ArticleContainer from "../ArticleContainer/ArticleContainer";
+import NavBar from "../NavBar/NavBar";
 import styled from "styled-components";
 
 const AppStyled = styled.div`
   width: 100%;
   height: 100%;
-  border: 2px solid blue;
 `;
 
 class App extends Component {
@@ -45,6 +45,7 @@ class App extends Component {
   render() {
     return (
       <AppStyled>
+        <NavBar />
         <ArticleContainer homePageStories={this.state.homePageStories} />
       </AppStyled>
     );
