@@ -10,7 +10,7 @@ export const fetchStories = async (storyID) => {
   return data;
 }
 
-export const fetchImages = async (url) => {
+export const fetchImage = async (url) => {
   const encoded = encodeURIComponent(url)
   const response = await fetch(`https://opengraph.io/api/1.1/site/${encoded}?app_id=0e0b4950-def6-4c04-b616-bbce614bff05`);
   const data = response.json();

@@ -17,7 +17,7 @@ const ArticleContainerStyled = styled.div`
 const ArticleContainer = (props) => {
   const articlesToDisplay = props.homePageStories.map(story => {
     return (
-      <ArticlePreview {...story} />
+      <ArticlePreview {...story} key={story.id}/>
     )
   })
   return (
