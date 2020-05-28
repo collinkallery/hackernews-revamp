@@ -1,7 +1,7 @@
-import  React from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import './ArticleContainer.css';
-import ArticlePreview from '../ArticlePreview/ArticlePreview'
-import styled from 'styled-components'
+import ArticlePreview from '../ArticlePreview/ArticlePreview';
+import styled from 'styled-components';
 
 const ArticleContainerStyled = styled.div`
   display: flex;
@@ -13,14 +13,14 @@ const ArticleContainerStyled = styled.div`
   height: 100%;
   border: 2px solid black;
 `
+
 const ArticleContainer = (props) => {
   const articlesToDisplay = props.homePageStories.map(story => {
     return (
-      <ArticlePreview {...story}/>
+      <ArticlePreview {...story} />
     )
   })
-
-  return (    
+  return (
     <ArticleContainerStyled>
       {articlesToDisplay}
     </ArticleContainerStyled>

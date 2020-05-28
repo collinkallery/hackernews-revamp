@@ -21,7 +21,7 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => { 
+  componentDidMount = () => {
     fetchPromises('newstories')
       .then(data => this.setState({newStoryIDs: data}))
       .then(newData => this.getStories(this.state.newStoryIDs[0]))
@@ -43,12 +43,6 @@ class App extends Component {
     this.setState({homePageStories: [...this.state.homePageStories, story]})
   }
 
-
-
-
-
-
-  
   render() {
     return (
       <AppStyled>
