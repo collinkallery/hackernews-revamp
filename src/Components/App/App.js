@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { fetchPromises, fetchStories } from "../../apiCalls";
 import ArticleContainer from "../ArticleContainer/ArticleContainer";
 import NavBar from "../NavBar/NavBar";
-import styled from "styled-components";
+import styled, { GlobalStyle, ThemeProvider } from "styled-components";
+import { darkTheme, lightTheme } from "../../theme/globalStyle";
 
-const AppStyled = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
@@ -44,10 +45,13 @@ class App extends Component {
 
   render() {
     return (
-      <AppStyled>
-        <NavBar />
-        <ArticleContainer homePageStories={this.state.homePageStories} />
-      </AppStyled>
+      <ThemeProvider theme={darkTheme}>
+        <Wrapper>
+          <NavBar />
+          <ArticleContainer homePageStories={this.state.homePageStories} />
+          {/* <GlobalStyle /> */}
+        </Wrapper>
+      </ThemeProvider>
     );
   }
 }
