@@ -8,16 +8,6 @@ const NavBarStyled = styled.div`
   height: 15%;
 `
 
-const LogoStyled = styled.h1`
-  margin: 3%;
-  padding: 1.5%;
-  border: 1px solid white;
-`
-
-const HeaderStyled = styled.h3`
-  text-decoration: underline
-`
-
 const NavBarTopStyled = styled.div`
   width: 100%;
   height: 70%;
@@ -28,22 +18,23 @@ const NavBarTopStyled = styled.div`
   justify-content: space-between;
   font-family: 'News Cycle', sans-serif;
   color: white;
-`
-const DropDownStyled = styled.select`
-  background-color: black;
-  width: 15%;
-  height: 40%;
-  border-radius: 5px;
-  color: white;
-  margin: 3%;
-  font-size: 1em;
-  border: 1px solid white;
-`
-const SignInBtnStyled = styled.button`
-  border: 2px solid black;
-  border-radius: 5px;
-  background-color: white;
-  margin: 3%;
+
+  h1 {
+    margin: 3%;
+    padding: 1.5%;
+    border: 1px solid white;
+  }
+
+  button {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    margin: 3%;
+  }
+
+  h3 {
+    text-decoration: underline
+  }
 `
 
 const NavBarBottomStyled = styled.div`
@@ -74,17 +65,17 @@ const NavBar = () => {
   return (
     <NavBarStyled>
       <NavBarTopStyled>
-        <LogoStyled>H N</LogoStyled>
-        <HeaderStyled>Headlines</HeaderStyled>
-        <SignInBtnStyled>SIGN IN</SignInBtnStyled>
+        <h1>H N</h1>
+        <h3>Headlines</h3>
+        <button>SIGN IN</button>
       </NavBarTopStyled>
-    <NavBarBottomStyled>
+      <NavBarBottomStyled>
         <LinkStyled to='/articles/new'>New</LinkStyled>
         <LinkStyled to='/articles/top'>Top</LinkStyled>
         <LinkStyled to='/articles/best'>Best</LinkStyled>
         <LinkStyled to='/articles/past'>Past</LinkStyled>
         <LinkStyled to='/articles/jobs' >Jobs</LinkStyled>
-    </NavBarBottomStyled>
+      </NavBarBottomStyled>
     </NavBarStyled>
   )
 }
