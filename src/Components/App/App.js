@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { fetchPromises, fetchStories } from "../../apiCalls";
 import ArticleContainer from "../ArticleContainer/ArticleContainer";
 import NavBar from "../NavBar/NavBar";
-import styled, { GlobalStyle, ThemeProvider } from "styled-components";
-import { darkTheme, lightTheme } from "../../theme/globalStyle";
+import styled, { ThemeProvider } from "styled-components";
+import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -49,7 +49,7 @@ class App extends Component {
         <Wrapper>
           <NavBar />
           <ArticleContainer homePageStories={this.state.homePageStories} />
-          {/* <GlobalStyle /> */}
+          <GlobalStyle />
         </Wrapper>
       </ThemeProvider>
     );
