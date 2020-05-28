@@ -1,10 +1,7 @@
-import  React from 'react';
-import './Comment.css';
+import React from "react";
 
 const Comment = () => {
-  return (
-    ''
-  )
-}
+  return "";
+};
 
 export default Comment;

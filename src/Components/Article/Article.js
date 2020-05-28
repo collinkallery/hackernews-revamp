@@ -1,10 +1,7 @@
-import  React from 'react';
-import './Article.css';
+import React from "react";
 
 const Article = () => {
-  return (
-    ''
-  )
-}
+  return "";
+};
 
 export default Article;

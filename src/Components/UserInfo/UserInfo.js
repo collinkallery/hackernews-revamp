@@ -1,10 +1,7 @@
-import  React from 'react';
-import './UserInfo.css';
+import React from "react";
 
 const UserInfo = () => {
-  return (
-    ''
-  )
-}
+  return "";
+};
 
 export default UserInfo;

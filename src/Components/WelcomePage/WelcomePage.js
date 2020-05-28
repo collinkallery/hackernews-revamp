@@ -1,10 +1,7 @@
-import  React from 'react';
-import './WelcomePage.css';
+import React from "react";
 
 const WelcomePage = () => {
-  return (
-    ''
-  )
-}
+  return "";
+};
 
 export default WelcomePage;

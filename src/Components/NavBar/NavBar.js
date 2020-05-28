@@ -1,12 +1,21 @@
-import  React from 'react';
-import './NavBar.css';
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const NavBarStyled = styled.div`
   width: 100%;
   height: 15%;
-`
+`;
+
+const LogoStyled = styled.h1`
+  margin: 3%;
+  padding: 1.5%;
+  border: 1px solid white;
+`;
+
+const HeaderStyled = styled.h3`
+  text-decoration: underline;
+`;
 
 const NavBarTopStyled = styled.div`
   width: 100%;
@@ -16,7 +25,7 @@ const NavBarTopStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-family: 'News Cycle', sans-serif;
+  font-family: "News Cycle", sans-serif;
   color: white;
 
   h1 {
@@ -45,9 +54,9 @@ const NavBarBottomStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  font-family: 'News Cycle', sans-serif;
+  font-family: "News Cycle", sans-serif;
   color: white;
-`
+`;
 
 const LinkStyled = styled(Link)`
   width: 10%;
@@ -59,7 +68,7 @@ const LinkStyled = styled(Link)`
     border-right: 1px solid white;
     color: white;
   }
-`
+`;
 
 const NavBar = () => {
   return (
@@ -77,7 +86,7 @@ const NavBar = () => {
         <LinkStyled to='/articles/jobs' >Jobs</LinkStyled>
       </NavBarBottomStyled>
     </NavBarStyled>
-  )
-}
+  );
+};
 
 export default NavBar;
