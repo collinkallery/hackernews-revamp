@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { fetchPromises, fetchStories } from "../../apiCalls";
 import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
 import NavBar from "../NavBar/NavBar";
+import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
 import {Route, Redirect} from "react-router-dom";
@@ -25,23 +26,18 @@ class App extends Component {
 
   componentDidMount = async () => {
     await fetchPromises("newstories")
-      .then((data) => this.setState({ newStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.newStoryIDs[0]))
-      .then(data => this.addTopic(data, 'Newest'))
-      .catch((err) => console.error(err));
-
+      .then(data => this.finishFetch('newStoryIDs', data, 'New'))
     await fetchPromises("beststories")
-      .then((data) => this.setState({ bestStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.bestStoryIDs[0]))
-      .then(data => this.addTopic(data, 'Best'))
-      .catch((err) => console.error(err));
-
+      .then(data => this.finishFetch('bestStoryIDs', data, 'Best'))
     await fetchPromises("topstories")
-      .then((data) => this.setState({ topStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.topStoryIDs[0]))
-      .then(data => this.addTopic(data, 'Top'))
-      .catch((err) => console.error(err));
+      .then(data => this.finishFetch('topStoryIDs', data, 'Top'))
   };
+
+  finishFetch = async (stateKey, fetchedData, topic) => {
+    this.setState({[stateKey]: fetchedData})
+    const story = await this.getStories(this.state[stateKey][0])
+    this.addTopic(story, topic)
+  }
 
   getStories = async (id) => {
     const story = await fetchStories(id);
@@ -78,6 +74,7 @@ class App extends Component {
             const { category } = match.params;
             const stateKey = this.findCategory(category);
             const dataIDs = this.state[stateKey];
+            return <AllPreviewContainer dataIDs={dataIDs} />
             }
           }
         />
