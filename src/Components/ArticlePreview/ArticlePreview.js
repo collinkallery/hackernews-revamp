@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import ArticleExpanded from '../ArticleExpanded/ArticleExpanded'
 import styled from 'styled-components'
 import {fetchImage} from '../../apiCalls'
+import {darkTheme} from "../../theme/globalStyle";
 
-const StoryCard = styled.div`
-  background-color: purple;
+const {primaryPurple, primaryBlue, secondaryTeal, background, textColor, error} = darkTheme;
+
+const Wrapper = styled.div`
+  background-color: ${primaryPurple};
   width: 75%;
   height: 25%;
 
@@ -27,11 +30,11 @@ const ArticlePreview = (props) => {
     })
 
   return (
-      <StoryCard>
+      <Wrapper>
         <p>{props.title}</p>
         <img src={image} />
         <p id={props.id}>{description}</p>
-      </StoryCard>
+      </Wrapper>
   )
 }
 
