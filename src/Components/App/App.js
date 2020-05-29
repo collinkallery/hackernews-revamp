@@ -6,31 +6,36 @@ import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
 import {Route, Redirect} from "react-router-dom";
+import '../../index.css';
+
+const {primaryPurple, primaryBlue, secondaryTeal, background, textColor, error} = darkTheme;
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  background: ${background};
 `;
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      newStoryIDs: [],
-      bestStoryIDs: [],
-      topStoryIDs: [],
+      NewestStoryIDs: [],
+      BestStoryIDs: [],
+      TopStoryIDs: [],
       homePageStories: [],
       test: ''
     };
   }
-
+  // make a helper function that calls lines 30-34
+  // takes in the arguments
   componentDidMount = async () => {
     await fetchPromises("newstories")
-      .then(data => this.finishFetch('newStoryIDs', data, 'New'))
+      .then(data => this.finishFetch('NewestStoryIDs', data, 'Newest'))
     await fetchPromises("beststories")
-      .then(data => this.finishFetch('bestStoryIDs', data, 'Best'))
+      .then(data => this.finishFetch('BestStoryIDs', data, 'Best'))
     await fetchPromises("topstories")
-      .then(data => this.finishFetch('topStoryIDs', data, 'Top'))
+      .then(data => this.finishFetch('TopStoryIDs', data, 'Top'))
   };
 
   finishFetch = async (stateKey, fetchedData, topic) => {

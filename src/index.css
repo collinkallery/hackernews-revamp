@@ -1,5 +1,4 @@
-/* 
-
+/*
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -17,17 +16,16 @@ code {
 
  {
   font-family: 'News Cycle', sans-serif;
-}
+} */
 
 html,
 body,
 #root {
   width: 100%;
   height: 100%;
+  background-color: #121212
 }
-
+/*
 #blockColorblindContent {
   display: none;
-} 
-
-*/
+} */
