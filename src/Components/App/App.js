@@ -4,40 +4,45 @@ import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
 import NavBar from "../NavBar/NavBar";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
+import '../../index.css';
+
+const {primaryPurple, primaryBlue, secondaryTeal, background, textColor, error} = darkTheme;
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  background: ${background};
 `;
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      newStoryIDs: [],
-      bestStoryIDs: [],
-      topStoryIDs: [],
+      NewestStoryIDs: [],
+      BestStoryIDs: [],
+      TopStoryIDs: [],
       homePageStories: [],
       test: ''
     };
   }
-
+  // make a helper function that calls lines 30-34
+  // takes in the arguments
   componentDidMount = async () => {
     await fetchPromises("newstories")
-      .then((data) => this.setState({ newStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.newStoryIDs[0]))
+      .then((data) => this.setState({ NewestStoryIDs: data }))
+      .then((newData) => this.getStories(this.state.NewestStoryIDs[0]))
       .then(data => this.addTopic(data, 'Newest'))
       .catch((err) => console.error(err));
 
     await fetchPromises("beststories")
-      .then((data) => this.setState({ bestStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.bestStoryIDs[0]))
+      .then((data) => this.setState({ BestStoryIDs: data }))
+      .then((newData) => this.getStories(this.state.BestStoryIDs[0]))
       .then(data => this.addTopic(data, 'Best'))
       .catch((err) => console.error(err));
 
     await fetchPromises("topstories")
-      .then((data) => this.setState({ topStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.topStoryIDs[0]))
+      .then((data) => this.setState({ TopStoryIDs: data }))
+      .then((newData) => this.getStories(this.state.TopStoryIDs[0]))
       .then(data => this.addTopic(data, 'Top'))
       .catch((err) => console.error(err));
   };
