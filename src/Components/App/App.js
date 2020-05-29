@@ -4,6 +4,7 @@ import ArticleContainer from "../ArticleContainer/ArticleContainer";
 import NavBar from "../NavBar/NavBar";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
+import {Route, Redirect} from "react-router-dom";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,6 +19,7 @@ class App extends Component {
       bestStoryIDs: [],
       topStoryIDs: [],
       homePageStories: [],
+      rendered: true
     };
   }
 
@@ -43,6 +45,12 @@ class App extends Component {
     this.setState({ homePageStories: [...this.state.homePageStories, story] });
   };
 
+  findCategory = (category) => {
+    const keys = Object.keys(this.state);
+    const correctCategory = keys.find(key => key.includes(category));
+    return correctCategory
+  }
+
   render() {
     return (
       <ThemeProvider theme={darkTheme}>
@@ -50,6 +58,15 @@ class App extends Component {
           <NavBar />
           <ArticleContainer homePageStories={this.state.homePageStories} />
           <GlobalStyle />
+          <Route
+          exact path="/articles/:category"
+          render={({match}) => {
+            const { category } = match.params;
+            const stateKey = this.findCategory(category);
+            const dataIDs = this.state[stateKey];
+            }
+          }
+        />
         </Wrapper>
       </ThemeProvider>
     );
