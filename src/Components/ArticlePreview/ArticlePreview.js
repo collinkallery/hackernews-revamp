@@ -40,23 +40,31 @@ const ImgContainer = styled.section`
   flex-direction: column;
 `;
 
+const LinkStyled = styled(Link)`
+  text-decoration: none;
+`;
+
 const ArticlePreview = (props) => {
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState(null);
   const pathName = `/articles/${props.topic}/${props.id}`;
+
   fetchImage(props.url).then((data) => {
-    return (
-      // use a try catch
-      setImage(data.hybridGraph.image),
-      setDescription(data.hybridGraph.description)
-    );
+    let imageUrl = "";
+    if (!data.hybridGraph) {
+      imageUrl =
+        "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg";
+    } else {
+      imageUrl = data.hybridGraph.image;
+    }
+    return setImage(imageUrl), setDescription(data.hybridGraph.description);
   });
 
   return (
     <Wrapper>
-      <Link to={pathName}>
+      <LinkStyled to={pathName}>
         <p>{props.title}</p>
-      </Link>
+      </LinkStyled>
       <ImgContainer>
         <img src={image} alt={description} />
       </ImgContainer>
