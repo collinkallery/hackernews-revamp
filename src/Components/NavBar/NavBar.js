@@ -40,11 +40,7 @@ const NavBarTopStyled = styled.div`
     background-color: white;
     margin: 3%;
   }
-
-  h3 {
-    text-decoration: underline
-  }
-`
+`;
 
 const NavBarBottomStyled = styled.div`
   width: 100%;
@@ -70,20 +66,23 @@ const LinkStyled = styled(Link)`
   }
 `;
 
+// update NavBar Links to be New Top Best and Saved? It would be cool to get saved articles to persist in local storage based on signed in user 
+// add functionality to login button -LL
+
 const NavBar = () => {
   return (
     <NavBarStyled>
       <NavBarTopStyled>
         <h1>H N</h1>
         <h3>Headlines</h3>
-        <button>SIGN IN</button>
+        <button>LOGIN</button>
       </NavBarTopStyled>
       <NavBarBottomStyled>
-        <LinkStyled to='/articles/new'>New</LinkStyled>
-        <LinkStyled to='/articles/top'>Top</LinkStyled>
-        <LinkStyled to='/articles/best'>Best</LinkStyled>
-        <LinkStyled to='/articles/past'>Past</LinkStyled>
-        <LinkStyled to='/articles/jobs' >Jobs</LinkStyled>
+        <LinkStyled to="/articles/new">New</LinkStyled>
+        <LinkStyled to="/articles/top">Top</LinkStyled>
+        <LinkStyled to="/articles/best">Best</LinkStyled>
+        <LinkStyled to="/articles/past">Past</LinkStyled>
+        <LinkStyled to="/articles/jobs">Jobs</LinkStyled>
       </NavBarBottomStyled>
     </NavBarStyled>
   );
