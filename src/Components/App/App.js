@@ -24,11 +24,10 @@ class App extends Component {
       BestStoryIDs: [],
       TopStoryIDs: [],
       homePageStories: [],
-      test: ''
     };
   }
-  // make a helper function that calls lines 30-34
-  // takes in the arguments
+
+
   componentDidMount = async () => {
     await fetchPromises("newstories")
       .then(data => this.finishFetch('NewestStoryIDs', data, 'Newest'))
@@ -71,7 +70,12 @@ class App extends Component {
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar />
-          <HomeArticleContainer homePageStories={this.state.homePageStories} />
+          <Route 
+            exact path="/"
+            render={() => {
+              return <HomeArticleContainer homePageStories={this.state.homePageStories} />
+            }
+          }/>
           <GlobalStyle />
           <Route
           exact path="/articles/:category"
