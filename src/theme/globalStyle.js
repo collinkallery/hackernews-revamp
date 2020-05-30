@@ -19,6 +19,7 @@ export const GlobalStyle = createGlobalStyle`
   
   body {
     font-family: 'News Cycle', sans-serif;
+    color: #FFFFFF;
   }
 
   #blockColorblindContent {
@@ -31,7 +32,7 @@ export const darkTheme = {
   primaryBlue: "#3700B3",
   secondaryTeal: "#03DAC5",
   background: "#121212",
-  textColor: "#1F1A24",
+  textColor: "#FFFFFF",
   error: "#CF6679",
 };
 
@@ -39,7 +40,7 @@ export const lightTheme = {
   primaryPurple: "#BB86FC",
   primaryBlue: "#3700B3",
   secondaryTeal: "#03DAC5",
-  background: "#1F1A24",
+  background: "#FFFFFF",
   textColor: "#121212",
   error: "#CF6679",
 };
