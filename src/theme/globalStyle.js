@@ -28,12 +28,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// surface = text color
+
 export const darkTheme = {
   primaryPurple: "#BB86FC",
   primaryBlue: "#3700B3",
   secondaryTeal: "#03DAC5",
   background: "#121212",
-  textColor: "#FFFFFF",
+  surface: "#FFFFFF",
   error: "#CF6679",
 };
 
@@ -42,6 +44,6 @@ export const lightTheme = {
   primaryBlue: "#3700B3",
   secondaryTeal: "#03DAC5",
   background: "#FFFFFF",
-  textColor: "#121212",
+  surface: "#121212",
   error: "#CF6679",
 };

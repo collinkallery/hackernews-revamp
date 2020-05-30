@@ -10,7 +10,7 @@ const {
   primaryBlue,
   secondaryTeal,
   background,
-  textColor,
+  surface,
   error,
 } = darkTheme;
 
@@ -29,7 +29,7 @@ const Wrapper = styled.div`
   p {
     font-size: 1.5em;
     background-color: ${background};
-    color: white;
+    color: ${surface};
     margin-top: 2%;
   }
 `;
@@ -55,6 +55,7 @@ const ArticlePreview = (props) => {
     return setPreview(data);
   });
 
+  // refactor if/else into ternary
   fetchImage(props.url).then((data) => {
     let imageUrl = "";
     if (!data.hybridGraph) {

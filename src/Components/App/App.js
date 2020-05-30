@@ -12,7 +12,7 @@ const {
   primaryBlue,
   secondaryTeal,
   background,
-  textColor,
+  surface,
   error,
 } = darkTheme;
 
