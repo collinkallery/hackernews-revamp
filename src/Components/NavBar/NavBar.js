@@ -28,12 +28,6 @@ const NavBarTopStyled = styled.div`
   font-family: "News Cycle", sans-serif;
   color: white;
 
-  h1 {
-    margin: 3%;
-    padding: 1.5%;
-    border: 1px solid white;
-  }
-
   button {
     border: 2px solid black;
     border-radius: 5px;
@@ -58,7 +52,7 @@ const NavBarBottomStyled = styled.div`
   color: white;
 `;
 
-const LinkStyled = styled(Link)`
+const TopicLinkStyled = styled(Link)`
   width: 10%;
   text-align: center;
   text-decoration: none;
@@ -70,20 +64,31 @@ const LinkStyled = styled(Link)`
   }
 `;
 
+const HomeLinkStyled = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  font-size: 32px;
+  /* margin: 3%; */
+  padding: 1.5%;
+  border: 1px solid white;
+`
+
 const NavBar = () => {
   return (
     <NavBarStyled>
       <NavBarTopStyled>
-        <h1>H N</h1>
+        <HomeLinkStyled to='/'>
+          H N
+        </HomeLinkStyled>
         <h3>Headlines</h3>
         <button>SIGN IN</button>
       </NavBarTopStyled>
       <NavBarBottomStyled>
-        <LinkStyled to='/articles/new'>New</LinkStyled>
-        <LinkStyled to='/articles/top'>Top</LinkStyled>
-        <LinkStyled to='/articles/best'>Best</LinkStyled>
-        <LinkStyled to='/articles/past'>Past</LinkStyled>
-        <LinkStyled to='/articles/jobs' >Jobs</LinkStyled>
+        <TopicLinkStyled to='/articles/New'>New</TopicLinkStyled>
+        <TopicLinkStyled to='/articles/Top'>Top</TopicLinkStyled>
+        <TopicLinkStyled to='/articles/Best'>Best</TopicLinkStyled>
+        <TopicLinkStyled to='/articles/Past'>Past</TopicLinkStyled>
+        <TopicLinkStyled to='/articles/Jobs' >Jobs</TopicLinkStyled>
       </NavBarBottomStyled>
     </NavBarStyled>
   );
