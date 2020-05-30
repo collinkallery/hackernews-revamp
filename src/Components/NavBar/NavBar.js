@@ -10,7 +10,7 @@ const NavBarStyled = styled.div`
 const LogoStyled = styled.h1`
   margin: 3%;
   padding: 1.5%;
-  border: 1px solid #FFFFFF;
+  border: 1px solid #ffffff;
 `;
 
 const NavBarTopStyled = styled.div`
@@ -22,7 +22,7 @@ const NavBarTopStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   font-family: "News Cycle", sans-serif;
-  color: #FFFFFF;
+  color: #ffffff;
 
   h1 {
     margin: 3%;
@@ -33,7 +33,7 @@ const NavBarTopStyled = styled.div`
   button {
     border: 2px solid #090909;
     border-radius: 5px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     margin: 3%;
   }
 `;
@@ -62,7 +62,7 @@ const LinkStyled = styled(Link)`
   }
 `;
 
-// update NavBar Links to be New Top Best and Saved? It would be cool to get saved articles to persist in local storage based on signed in user
+// update NavBar Links to be About New Top Best Saved? It would be cool to get saved articles to persist in local storage based on signed in user
 // add functionality to login button -LL
 
 const NavBar = () => {
@@ -70,7 +70,7 @@ const NavBar = () => {
     <NavBarStyled>
       <NavBarTopStyled>
         <h1>H N</h1>
-        <h3>Headlines</h3>
+        <h2>Headlines</h2>
         <button>LOGIN</button>
       </NavBarTopStyled>
       <NavBarBottomStyled>

@@ -58,7 +58,7 @@ const ArticlePreview = (props) => {
         <p>{props.title}</p>
       </Link>
       <ImgContainer>
-        <img src={image} />
+        <img src={image} alt={description} />
       </ImgContainer>
     </Wrapper>
   );
