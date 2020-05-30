@@ -18,13 +18,14 @@ code {
   font-family: 'News Cycle', sans-serif;
 } */
 
-html,
+/* html,
 body,
 #root {
   width: 100%;
   height: 100%;
-  background-color: #121212
-}
+  background-color: #121212;
+  border: 0px;
+} */
 /*
 #blockColorblindContent {
   display: none;
