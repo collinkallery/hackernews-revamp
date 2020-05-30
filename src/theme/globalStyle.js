@@ -43,7 +43,3 @@ export const lightTheme = {
   textColor: "#121212",
   error: "#CF6679",
 };
-
-{/* <React.Fragment>
-  <GlobalStyle />
-</React.Fragment>; */}
