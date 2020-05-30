@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { fetchPromises, fetchStories } from "../../apiCalls";
 import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
 import NavBar from "../NavBar/NavBar";
+import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
-import "../../index.css";
+import { Route, Redirect } from "react-router-dom";
 
 const {
   primaryPurple,
@@ -29,29 +30,25 @@ class App extends Component {
       BestStoryIDs: [],
       TopStoryIDs: [],
       homePageStories: [],
-      test: "",
     };
   }
-  // make a helper function that calls lines 30-34
-  // takes in the arguments
+
   componentDidMount = async () => {
-    await fetchPromises("newstories")
-      .then((data) => this.setState({ NewestStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.NewestStoryIDs[0]))
-      .then((data) => this.addTopic(data, "Newest"))
-      .catch((err) => console.error(err));
+    await fetchPromises("newstories").then((data) =>
+      this.finishFetch("NewestStoryIDs", data, "Newest")
+    );
+    await fetchPromises("beststories").then((data) =>
+      this.finishFetch("BestStoryIDs", data, "Best")
+    );
+    await fetchPromises("topstories").then((data) =>
+      this.finishFetch("TopStoryIDs", data, "Top")
+    );
+  };
 
-    await fetchPromises("beststories")
-      .then((data) => this.setState({ BestStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.BestStoryIDs[0]))
-      .then((data) => this.addTopic(data, "Best"))
-      .catch((err) => console.error(err));
-
-    await fetchPromises("topstories")
-      .then((data) => this.setState({ TopStoryIDs: data }))
-      .then((newData) => this.getStories(this.state.TopStoryIDs[0]))
-      .then((data) => this.addTopic(data, "Top"))
-      .catch((err) => console.error(err));
+  finishFetch = async (stateKey, fetchedData, topic) => {
+    this.setState({ [stateKey]: fetchedData });
+    const story = await this.getStories(this.state[stateKey][0]);
+    this.addTopic(story, topic);
   };
 
   getStories = async (id) => {
@@ -72,13 +69,39 @@ class App extends Component {
     });
   };
 
+  findCategory = (category) => {
+    const keys = Object.keys(this.state);
+    const correctCategory = keys.find((key) => key.includes(category));
+    return correctCategory;
+  };
+
   render() {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar />
-          <HomeArticleContainer homePageStories={this.state.homePageStories} />
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return (
+                <HomeArticleContainer
+                  homePageStories={this.state.homePageStories}
+                />
+              );
+            }}
+          />
           <GlobalStyle />
+          <Route
+            exact
+            path="/articles/:category"
+            render={({ match }) => {
+              const { category } = match.params;
+              const stateKey = this.findCategory(category);
+              const dataIDs = this.state[stateKey];
+              return <AllPreviewContainer dataIDs={dataIDs} />;
+            }}
+          />
         </Wrapper>
       </ThemeProvider>
     );
