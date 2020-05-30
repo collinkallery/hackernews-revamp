@@ -33,6 +33,10 @@ const ImgContainer = styled.section`
   flex-direction: column;
 `
 
+const LinkStyled = styled(Link)`
+  text-decoration: none
+`
+
 
 const ArticlePreview = (props) => {
   const [image, setImage] = useState(null);
@@ -49,9 +53,9 @@ const ArticlePreview = (props) => {
 
   return (
       <Wrapper>
-        <Link to={pathName}>
+        <LinkStyled to={pathName}>
           <p className="article-preview-title">{props.title}</p>
-        </Link>
+        </LinkStyled>
         <ImgContainer>
           <img src={image} />
         </ImgContainer>
