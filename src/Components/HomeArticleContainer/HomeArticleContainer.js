@@ -1,9 +1,16 @@
 import React from "react";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import styled from "styled-components";
-import {darkTheme} from "../../theme/globalStyle";
+import { darkTheme } from "../../theme/globalStyle";
 
-const {primaryPurple, primaryBlue, secondaryTeal, background, textColor, error} = darkTheme;
+const {
+  primaryPurple,
+  primaryBlue,
+  secondaryTeal,
+  background,
+  textColor,
+  error,
+} = darkTheme;
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,7 +22,7 @@ const Wrapper = styled.div`
   height: 100%;
   border: 2px solid black;
   background-color: ${background};
-`
+`;
 
 const ArticleWrapper = styled.section`
   background-color: ${background};
@@ -32,23 +39,18 @@ const ArticleWrapper = styled.section`
     padding: 0;
     border-bottom: 2px solid ${secondaryTeal};
   }
-`
+`;
 
 const HomeArticleContainer = (props) => {
-
-  const articlesToDisplay = props.homePageStories.map(story => {
+  const articlesToDisplay = props.homePageStories.map((story) => {
     return (
       <ArticleWrapper>
         <p className="topic-header">{story.topic} Story</p>
-        <ArticlePreview {...story} key={story.id}/>
+        <ArticlePreview {...story} key={story.id} />
       </ArticleWrapper>
-    )
-  })
-  return (
-    <Wrapper>
-      {articlesToDisplay}
-    </Wrapper>
-  )
-}
+    );
+  });
+  return <Wrapper>{articlesToDisplay}</Wrapper>;
+};
 
 export default HomeArticleContainer;

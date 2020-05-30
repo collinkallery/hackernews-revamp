@@ -1,11 +1,18 @@
-import React, {useState} from 'react';
-import ArticleExpanded from '../ArticleExpanded/ArticleExpanded'
-import styled from 'styled-components'
-import {fetchImage} from '../../apiCalls'
-import {darkTheme} from "../../theme/globalStyle";
-import {Link} from 'react-router-dom';
+import React, { useState } from "react";
+import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
+import styled from "styled-components";
+import { fetchImage } from "../../apiCalls";
+import { darkTheme } from "../../theme/globalStyle";
+import { Link } from "react-router-dom";
 
-const {primaryPurple, primaryBlue, secondaryTeal, background, textColor, error} = darkTheme;
+const {
+  primaryPurple,
+  primaryBlue,
+  secondaryTeal,
+  background,
+  textColor,
+  error,
+} = darkTheme;
 
 const Wrapper = styled.div`
   background-color: ${background};
@@ -25,38 +32,36 @@ const Wrapper = styled.div`
     color: white;
     margin-top: 2%;
   }
-`
+`;
 
 const ImgContainer = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
-`
-
+`;
 
 const ArticlePreview = (props) => {
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState(null);
-  const pathName = `/articles/${props.topic}/${props.id}`
-  fetchImage(props.url)
-    .then(data => {
-      return (
-        // use a try catch
-        setImage(data.hybridGraph.image),
-        setDescription(data.hybridGraph.description)
-      )
-    })
+  const pathName = `/articles/${props.topic}/${props.id}`;
+  fetchImage(props.url).then((data) => {
+    return (
+      // use a try catch
+      setImage(data.hybridGraph.image),
+      setDescription(data.hybridGraph.description)
+    );
+  });
 
   return (
-      <Wrapper>
-        <Link to={pathName}>
-          <p className="article-preview-title">{props.title}</p>
-        </Link>
-        <ImgContainer>
-          <img src={image} />
-        </ImgContainer>
-      </Wrapper>
-  )
-}
+    <Wrapper>
+      <Link to={pathName}>
+        <p className="article-preview-title">{props.title}</p>
+      </Link>
+      <ImgContainer>
+        <img src={image} />
+      </ImgContainer>
+    </Wrapper>
+  );
+};
 
 export default ArticlePreview;
