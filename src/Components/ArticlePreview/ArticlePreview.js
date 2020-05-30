@@ -26,7 +26,7 @@ const Wrapper = styled.div`
     align-self: center;
   }
 
-  p.article-preview-title {
+  p {
     font-size: 1.5em;
     background-color: ${background};
     color: white;
@@ -55,7 +55,7 @@ const ArticlePreview = (props) => {
   return (
     <Wrapper>
       <Link to={pathName}>
-        <p className="article-preview-title">{props.title}</p>
+        <p>{props.title}</p>
       </Link>
       <ImgContainer>
         <img src={image} />
