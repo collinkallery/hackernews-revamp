@@ -98,7 +98,7 @@ class App extends Component {
             render={({ match }) => {
               const { category } = match.params;
               const stateKey = this.findCategory(category);
-              const dataIDs = this.state[stateKey];
+              const dataIDs = this.state[stateKey].slice(0, 9);
               return <AllPreviewContainer dataIDs={dataIDs} />;
             }}
           />

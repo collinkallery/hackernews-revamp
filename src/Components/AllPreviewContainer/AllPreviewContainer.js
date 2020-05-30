@@ -1,10 +1,12 @@
-import React, {useState} from "react";
-import {fetchStoriesTest} from '../../apiCalls'
+import React from "react";
+import ArticlePreview from "../ArticlePreview/ArticlePreview";
 
-const AllPreviewContainer = (props) => {
-    return (
-      <p>Hi</p>
-    );
-  }
+const AllPreviewsContainer = (props) => {
+  const storyPromises = props.dataIDs.map((id) => {
+    return <ArticlePreview id={id} />;
+  });
 
-export default AllPreviewContainer;
+  return <div>{storyPromises}</div>;
+};
+
+export default AllPreviewsContainer;

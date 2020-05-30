@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import styled from "styled-components";
-import { fetchImage } from "../../apiCalls";
+import { fetchStories, fetchImage } from "../../apiCalls";
 import { darkTheme } from "../../theme/globalStyle";
 import { Link } from "react-router-dom";
 
@@ -46,18 +46,26 @@ const LinkStyled = styled(Link)`
 
 const ArticlePreview = (props) => {
   const [image, setImage] = useState(null);
-  const [description, setDescription] = useState(null);
+  let [description, setDescription] = useState(null);
+  const [preview, setPreview] = useState(null);
+
   const pathName = `/articles/${props.topic}/${props.id}`;
+
+  fetchStories(props.id).then((data) => {
+    return setPreview(data);
+  });
 
   fetchImage(props.url).then((data) => {
     let imageUrl = "";
     if (!data.hybridGraph) {
       imageUrl =
         "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg";
+      description = "No image to display";
     } else {
       imageUrl = data.hybridGraph.image;
+      description = data.hybridGraph.description;
     }
-    return setImage(imageUrl), setDescription(data.hybridGraph.description);
+    return setImage(imageUrl), setDescription(description);
   });
 
   return (

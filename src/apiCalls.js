@@ -10,7 +10,7 @@ export const fetchStories = async (storyID) => {
   return data;
 }
 
-export const fetchStoriesTest = async (storyIDs) => {
+export const fetchAllStories = async (storyIDs) => {
   return storyIDs.map(async (storyID) => {
     const response = await fetch(`https://hacker-news.firebaseio.com/v0/item/${storyID}.json?print=pretty`);
     const data = response.json();
