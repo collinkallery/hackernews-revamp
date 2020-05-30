@@ -38,7 +38,7 @@ const HomeArticleContainer = (props) => {
 
   const articlesToDisplay = props.homePageStories.map(story => {
     return (
-      <ArticleWrapper>
+      <ArticleWrapper key={story.id + 1}>
         <p className="topic-header">{story.topic} Story</p>
         <ArticlePreview {...story} key={story.id}/>
       </ArticleWrapper>
