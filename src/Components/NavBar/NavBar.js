@@ -16,19 +16,12 @@ const LogoStyled = styled.h1`
 const NavBarTopStyled = styled.div`
   width: 100%;
   height: 70%;
-  ${"" /* border: 1px solid black; */}
   background-color: #090909;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-family: "News Cycle", sans-serif;
   color: #ffffff;
-
-  h1 {
-    margin: 3%;
-    padding: 1.5%;
-    border: 1px solid white;
-  }
 
   button {
     border: 2px solid #090909;
@@ -41,7 +34,6 @@ const NavBarTopStyled = styled.div`
 const NavBarBottomStyled = styled.div`
   width: 100%;
   height: 30%;
-  border: 1px solid black;
   background-color: black;
   display: flex;
   align-items: center;
@@ -50,7 +42,7 @@ const NavBarBottomStyled = styled.div`
   color: white;
 `;
 
-const LinkStyled = styled(Link)`
+const TopicLinkStyled = styled(Link)`
   width: 10%;
   text-align: center;
   text-decoration: none;
@@ -65,20 +57,31 @@ const LinkStyled = styled(Link)`
 // update NavBar Links to be About New Top Best Saved? It would be cool to get saved articles to persist in local storage based on signed in user
 // add functionality to login button -LL
 
+const HomeLinkStyled = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  font-size: 32px;
+  /* margin: 3%; */
+  padding: 1.5%;
+  border: 1px solid white;
+`
+
 const NavBar = () => {
   return (
     <NavBarStyled>
       <NavBarTopStyled>
-        <h1>H N</h1>
+        <HomeLinkStyled to='/'>
+          H N
+        </HomeLinkStyled>
         <h2>Headlines</h2>
-        <button>LOGIN</button>
+        <button>SIGN IN</button>
       </NavBarTopStyled>
       <NavBarBottomStyled>
-        <LinkStyled to="/articles/new">New</LinkStyled>
-        <LinkStyled to="/articles/top">Top</LinkStyled>
-        <LinkStyled to="/articles/best">Best</LinkStyled>
-        <LinkStyled to="/articles/past">Past</LinkStyled>
-        <LinkStyled to="/articles/jobs">Jobs</LinkStyled>
+        <TopicLinkStyled to='/articles/New'>New</TopicLinkStyled>
+        <TopicLinkStyled to='/articles/Top'>Top</TopicLinkStyled>
+        <TopicLinkStyled to='/articles/Best'>Best</TopicLinkStyled>
+        <TopicLinkStyled to='/articles/Past'>Past</TopicLinkStyled>
+        <TopicLinkStyled to='/articles/Jobs' >Jobs</TopicLinkStyled>
       </NavBarBottomStyled>
     </NavBarStyled>
   );
