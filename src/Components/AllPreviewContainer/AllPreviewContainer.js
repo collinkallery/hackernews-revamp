@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
+import {fetchStoriesTest} from '../../apiCalls'
 
-const AllPreviewContainer = () => {
-  console.log('I am here')
-  return "";
-};
+const AllPreviewContainer = (props) => {
+    return (
+      <p>Hi</p>
+    );
+  }
 
 export default AllPreviewContainer;
