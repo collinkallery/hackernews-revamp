@@ -16,9 +16,10 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
-  
+
   body {
     font-family: 'News Cycle', sans-serif;
+    background-color: #121212;
     color: #FFFFFF;
   }
 
