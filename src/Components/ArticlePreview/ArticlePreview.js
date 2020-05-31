@@ -47,13 +47,7 @@ const LinkStyled = styled(Link)`
 const ArticlePreview = (props) => {
   const [image, setImage] = useState(null);
   let [description, setDescription] = useState(null);
-  const [preview, setPreview] = useState(null);
-
   const pathName = `/articles/${props.topic}/${props.id}`;
-
-  fetchStories(props.id).then((data) => {
-    return setPreview(data);
-  });
 
   // refactor if/else into ternary
   fetchImage(props.url).then((data) => {
