@@ -5,7 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 
 const {
   primaryPurple,
@@ -30,6 +30,7 @@ class App extends Component {
       BestStoryIDs: [],
       TopStoryIDs: [],
       homePageStories: [],
+      currentCategory: ''
     };
   }
 
@@ -80,28 +81,31 @@ class App extends Component {
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar />
-          <Route
-            exact
-            path="/"
-            render={() => {
-              return (
-                <HomeArticleContainer
-                  homePageStories={this.state.homePageStories}
-                />
-              );
-            }}
-          />
-          <GlobalStyle />
-          <Route
-            exact
-            path="/articles/:category"
-            render={({ match }) => {
-              const { category } = match.params;
-              const stateKey = this.findCategory(category);
-              const dataIDs = this.state[stateKey].slice(0, 9);
-              return <AllPreviewContainer dataIDs={dataIDs} />;
-            }}
-          />
+          
+            <Route
+              exact 
+              path="/"
+              render={() => {
+                return (
+                  <HomeArticleContainer
+                    homePageStories={this.state.homePageStories}
+                  />
+                );
+              }}
+            />
+            <GlobalStyle />
+            <Route
+              path="/articles/:category"
+              exact
+              render={({ match }) => {
+                const { category } = match.params;
+                console.log(category)
+                const stateKey = this.findCategory(category);
+                const dataIDs = this.state[stateKey].slice(0, 9);
+                return <AllPreviewContainer dataIDs={dataIDs} />;
+              }}
+            />
+          
         </Wrapper>
       </ThemeProvider>
     );

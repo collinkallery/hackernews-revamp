@@ -60,7 +60,7 @@ const ArticlePreview = (props) => {
       imageUrl = data.hybridGraph.image;
       description = data.hybridGraph.description;
     }
-    return setImage(imageUrl), setDescription(description);
+    return (setImage(imageUrl), setDescription(description))
   });
 
   return (

@@ -1,13 +1,22 @@
 import React, { useState, useEffect, Component } from "react";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import {fetchStories} from '../../apiCalls'
+import ReactDom from 'react-dom'
 
 class AllPreviewsContainer extends Component {
   constructor(props) {
+    console.log('hi')
     super(props)
     this.state = {
       previews: [],
-      // articlePreviews: []
+      articlesToDisplay: []
+    }
+  }
+
+  clearState = () => {
+    this.setState = {
+      previews: [],
+      articlesToDisplay: []
     }
   }
 
@@ -21,7 +30,13 @@ class AllPreviewsContainer extends Component {
   }
 
   componentDidMount = async () => {
+    console.log('mounted')
     await this.fetchPreviews();
+  }
+
+  componentDidUpdate = () => {
+    console.log('updated')
+    // this.setState({ar})
   }
 
   createArticlePreviews = () => {
@@ -30,6 +45,7 @@ class AllPreviewsContainer extends Component {
         <ArticlePreview {...preview} />
       )
     })
+    // this.setState({articlesToDisplay: articlePreviews})
     return articlePreviews
   }
 
