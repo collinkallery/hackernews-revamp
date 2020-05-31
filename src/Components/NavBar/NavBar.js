@@ -12,7 +12,7 @@ const {
   error,
 } = darkTheme;
 
-const NavBarStyled = styled.div`
+const NavBarStyled = styled.header`
   width: 100%;
   height: 15%;
 `;
