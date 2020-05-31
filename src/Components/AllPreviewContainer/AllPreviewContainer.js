@@ -30,13 +30,7 @@ class AllPreviewsContainer extends Component {
   }
 
   componentDidMount = async () => {
-    console.log('mounted')
     await this.fetchPreviews();
-  }
-
-  componentDidUpdate = () => {
-    console.log('updated')
-    // this.setState({ar})
   }
 
   createArticlePreviews = () => {
@@ -45,7 +39,6 @@ class AllPreviewsContainer extends Component {
         <ArticlePreview {...preview} />
       )
     })
-    // this.setState({articlesToDisplay: articlePreviews})
     return articlePreviews
   }
 

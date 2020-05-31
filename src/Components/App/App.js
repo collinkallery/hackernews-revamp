@@ -5,7 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
-import { Route, Redirect, Switch } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 const {
   primaryPurple,
@@ -99,7 +99,6 @@ class App extends Component {
               exact
               render={({ match }) => {
                 const { category } = match.params;
-                console.log(category)
                 const stateKey = this.findCategory(category);
                 const dataIDs = this.state[stateKey].slice(0, 9);
                 return <AllPreviewContainer dataIDs={dataIDs} />;
