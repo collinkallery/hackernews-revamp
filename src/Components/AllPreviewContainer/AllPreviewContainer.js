@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState, useEffect, Component } from "react";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
+import {fetchStories} from '../../apiCalls'
 
-const AllPreviewsContainer = (props) => {
-  const storyPromises = props.dataIDs.map((id) => {
-    return <ArticlePreview id={id} />;
-  });
+class AllPreviewsContainer extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      previews: [],
+      // articlePreviews: []
+    }
+  }
 
-  return <div>{storyPromises}</div>;
+  fetchPreviews = () => {
+    return this.props.dataIDs.map(id => {
+      fetchStories(id)
+        .then(preview => {
+          this.setState({previews: [...this.state.previews, preview]})
+      })
+    })
+  }
+
+  componentDidMount = async () => {
+    await this.fetchPreviews();
+  }
+
+  createArticlePreviews = () => {
+    let articlePreviews = this.state.previews.map(preview => {
+      return (
+        <ArticlePreview {...preview} />
+      )
+    })
+    return articlePreviews
+  }
+
+  render() {
+    return <div>{this.createArticlePreviews()}</div>;
+  }
 };
 
 export default AllPreviewsContainer;
