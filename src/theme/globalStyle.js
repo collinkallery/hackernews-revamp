@@ -16,9 +16,11 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
-  
+
   body {
     font-family: 'News Cycle', sans-serif;
+    background-color: #121212;
+    color: #FFFFFF;
   }
 
   #blockColorblindContent {
@@ -26,12 +28,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
+// surface = text color
+
 export const darkTheme = {
   primaryPurple: "#BB86FC",
   primaryBlue: "#3700B3",
   secondaryTeal: "#03DAC5",
   background: "#121212",
-  textColor: "#1F1A24",
+  surface: "#FFFFFF",
   error: "#CF6679",
 };
 
@@ -39,11 +43,7 @@ export const lightTheme = {
   primaryPurple: "#BB86FC",
   primaryBlue: "#3700B3",
   secondaryTeal: "#03DAC5",
-  background: "#1F1A24",
-  textColor: "#121212",
+  background: "#FFFFFF",
+  surface: "#121212",
   error: "#CF6679",
 };
-
-{/* <React.Fragment>
-  <GlobalStyle />
-</React.Fragment>; */}
