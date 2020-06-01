@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import styled from "styled-components";
-import { fetchStories, fetchImage } from "../../apiCalls";
+import { fetchImage } from "../../apiCalls";
 import { darkTheme } from "../../theme/globalStyle";
 import { Link } from "react-router-dom";
 
@@ -47,14 +47,14 @@ const LinkStyled = styled(Link)`
 const ArticlePreview = (props) => {
   const [image, setImage] = useState(null);
   let [description, setDescription] = useState(null);
-  const pathName = `/articles/${props.topic}/${props.id}`;
+
+  const pathName = `${props.topic}/${props.id}`;
 
   // refactor if/else into ternary
   fetchImage(props.url).then((data) => {
-    let imageUrl = "";
-    if (!data.hybridGraph) {
-      imageUrl =
-        "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg";
+    let imageUrl = ''
+    if (data === "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg") {
+      imageUrl = data
       description = "No image to display";
     } else {
       imageUrl = data.hybridGraph.image;
@@ -63,14 +63,30 @@ const ArticlePreview = (props) => {
     return (setImage(imageUrl), setDescription(description))
   });
 
+  useEffect(() => {
+    return () => {
+      console.log("cleaned up");
+    };
+  }, []);
+
+
+  const handleClickedArticle = () => {
+    const previewData = {
+      ...props,
+      description,
+      image,                  
+    }
+    props.setClickedArticle(previewData)
+  }
+
   return (
     <Wrapper>
-      <LinkStyled to={pathName}>
+      <LinkStyled onClick={handleClickedArticle} to={pathName}>
         <p>{props.title}</p>
+        <ImgContainer>
+          <img src={image} alt={description} />
+        </ImgContainer>
       </LinkStyled>
-      <ImgContainer>
-        <img src={image} alt={description} />
-      </ImgContainer>
     </Wrapper>
   );
 };

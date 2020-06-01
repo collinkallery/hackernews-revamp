@@ -1,31 +1,24 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { Component } from "react";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import {fetchStories} from '../../apiCalls'
-import ReactDom from 'react-dom'
 
 class AllPreviewsContainer extends Component {
   constructor(props) {
-    console.log('hi')
     super(props)
     this.state = {
       previews: [],
-      articlesToDisplay: []
-    }
-  }
-
-  clearState = () => {
-    this.setState = {
-      previews: [],
-      articlesToDisplay: []
     }
   }
 
   fetchPreviews = () => {
+    const url = window.location.pathname
     return this.props.dataIDs.map(id => {
-      fetchStories(id)
+      const previews = fetchStories(id)
         .then(preview => {
-          this.setState({previews: [...this.state.previews, preview]})
+          preview['topic'] = url
+          return this.setState({previews: [...this.state.previews, preview]})
       })
+      return previews
     })
   }
 
@@ -33,10 +26,31 @@ class AllPreviewsContainer extends Component {
     await this.fetchPreviews();
   }
 
+  getPrevPropsIDs = (prevProps) => {
+    return prevProps.dataIDs.map(id => {
+      return id
+    })
+  }
+
+  validateArrays = (prevProps) => {
+    const prevPropsIDs = this.getPrevPropsIDs(prevProps)
+    const test = prevPropsIDs.every(prevProp => {
+      return this.props.dataIDs.includes(prevProp)
+    })
+    return test
+  }
+
+  componentDidUpdate = async (prevProps, prevState) => {
+    if(!this.validateArrays(prevProps)) {
+      this.setState({previews: []})
+      this.fetchPreviews();
+    }
+  }
+
   createArticlePreviews = () => {
     let articlePreviews = this.state.previews.map(preview => {
       return (
-        <ArticlePreview {...preview} />
+        <ArticlePreview setClickedArticle={this.props.setClickedArticle} key={preview.id} {...preview} />
       )
     })
     return articlePreviews

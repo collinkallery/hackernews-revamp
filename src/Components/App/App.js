@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { fetchPromises, fetchStories } from "../../apiCalls";
 import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
+import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import NavBar from "../NavBar/NavBar";
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 const {
   primaryPurple,
@@ -30,7 +31,7 @@ class App extends Component {
       BestStoryIDs: [],
       TopStoryIDs: [],
       homePageStories: [],
-      currentCategory: ''
+      clickedArticle: {}
     };
   }
 
@@ -60,7 +61,7 @@ class App extends Component {
 
   addTopic = (story, topic) => {
     const matchingStory = this.state.homePageStories.find(
-      (specificStory) => specificStory.id == story.id
+      (specificStory) => specificStory.id === story.id
     );
     matchingStory["topic"] = topic;
     const index = this.state.homePageStories.indexOf(matchingStory);
@@ -75,6 +76,10 @@ class App extends Component {
     const correctCategory = keys.find((key) => key.includes(category));
     return correctCategory;
   };
+
+  setClickedArticle = (article) => {
+    this.setState({clickedArticle: article})
+  }
 
   render() {
     return (
@@ -101,10 +106,16 @@ class App extends Component {
                 const { category } = match.params;
                 const stateKey = this.findCategory(category);
                 const dataIDs = this.state[stateKey].slice(0, 9);
-                return <AllPreviewContainer dataIDs={dataIDs} />;
+                return <AllPreviewContainer setClickedArticle={this.setClickedArticle} dataIDs={dataIDs} />;
               }}
             />
-          
+          <Route
+            path="/articles/:category/:id"
+            exact
+            render={() => {
+              return <ArticleExpanded clickedArticle={this.state.clickedArticle}/>
+            }}
+          />
         </Wrapper>
       </ThemeProvider>
     );
