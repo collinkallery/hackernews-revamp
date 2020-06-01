@@ -47,7 +47,7 @@ const LinkStyled = styled(Link)`
 const ArticlePreview = (props) => {
   const [image, setImage] = useState(null);
   let [description, setDescription] = useState(null);
-  const pathName = `/articles/${props.topic}/${props.id}`;
+  const pathName = `${props.topic}/${props.id}`;
 
   // refactor if/else into ternary
   fetchImage(props.url).then((data) => {
@@ -66,10 +66,10 @@ const ArticlePreview = (props) => {
     <Wrapper>
       <LinkStyled to={pathName}>
         <p>{props.title}</p>
+        <ImgContainer>
+          <img src={image} alt={description} />
+        </ImgContainer>
       </LinkStyled>
-      <ImgContainer>
-        <img src={image} alt={description} />
-      </ImgContainer>
     </Wrapper>
   );
 };
