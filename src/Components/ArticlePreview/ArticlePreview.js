@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import styled from "styled-components";
-import { fetchStories, fetchImage } from "../../apiCalls";
+import { fetchImage } from "../../apiCalls";
 import { darkTheme } from "../../theme/globalStyle";
 import { Link } from "react-router-dom";
 
@@ -51,10 +51,9 @@ const ArticlePreview = (props) => {
 
   // refactor if/else into ternary
   fetchImage(props.url).then((data) => {
-    let imageUrl = "";
-    if (!data.hybridGraph) {
-      imageUrl =
-        "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg";
+    let imageUrl = ''
+    if (data === "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg") {
+      imageUrl = data
       description = "No image to display";
     } else {
       imageUrl = data.hybridGraph.image;
