@@ -5,7 +5,7 @@ import NavBar from "../NavBar/NavBar";
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 const {
   primaryPurple,
@@ -60,7 +60,7 @@ class App extends Component {
 
   addTopic = (story, topic) => {
     const matchingStory = this.state.homePageStories.find(
-      (specificStory) => specificStory.id == story.id
+      (specificStory) => specificStory.id === story.id
     );
     matchingStory["topic"] = topic;
     const index = this.state.homePageStories.indexOf(matchingStory);
