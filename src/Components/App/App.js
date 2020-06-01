@@ -104,7 +104,6 @@ class App extends Component {
                 return <AllPreviewContainer dataIDs={dataIDs} />;
               }}
             />
-          
         </Wrapper>
       </ThemeProvider>
     );
