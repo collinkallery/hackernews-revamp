@@ -47,7 +47,7 @@ const HomeArticleContainer = (props) => {
       setRerender(story);
     }
     return (
-      <ArticleWrapper>
+      <ArticleWrapper key={story.id}>
         <h3>{story.topic} Story</h3>
         <ArticlePreview {...story} key={story.id} />
       </ArticleWrapper>
