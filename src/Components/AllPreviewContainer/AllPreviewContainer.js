@@ -11,11 +11,14 @@ class AllPreviewsContainer extends Component {
   }
 
   fetchPreviews = () => {
+    const url = window.location.pathname
     return this.props.dataIDs.map(id => {
-      return fetchStories(id)
+      const previews = fetchStories(id)
         .then(preview => {
+          preview['topic'] = url
           return this.setState({previews: [...this.state.previews, preview]})
       })
+      return previews
     })
   }
 
