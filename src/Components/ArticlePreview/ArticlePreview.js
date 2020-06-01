@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import styled from "styled-components";
 import { fetchImage } from "../../apiCalls";
@@ -47,6 +47,7 @@ const LinkStyled = styled(Link)`
 const ArticlePreview = (props) => {
   const [image, setImage] = useState(null);
   let [description, setDescription] = useState(null);
+
   const pathName = `${props.topic}/${props.id}`;
 
   // refactor if/else into ternary
@@ -62,9 +63,25 @@ const ArticlePreview = (props) => {
     return (setImage(imageUrl), setDescription(description))
   });
 
+  useEffect(() => {
+    return () => {
+      console.log("cleaned up");
+    };
+  }, []);
+
+
+  const handleClickedArticle = () => {
+    const previewData = {
+      ...props,
+      description,
+      image,                  
+    }
+    props.setClickedArticle(previewData)
+  }
+
   return (
     <Wrapper>
-      <LinkStyled to={pathName}>
+      <LinkStyled onClick={handleClickedArticle} to={pathName}>
         <p>{props.title}</p>
         <ImgContainer>
           <img src={image} alt={description} />
