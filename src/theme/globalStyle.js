@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
-  @import url("https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&display=swap")
 
   *,
   *:after,
@@ -18,9 +17,9 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'News Cycle', sans-serif;
     background-color: #121212;
     color: #FFFFFF;
+    font-family: 'News Cycle', sans-serif;
   }
 
   #blockColorblindContent {
