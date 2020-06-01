@@ -20,3 +20,5 @@ export const fetchImage = async (url) => {
     return data;
   }
 }
+
+// should we refactor if/else to ternary? -LL

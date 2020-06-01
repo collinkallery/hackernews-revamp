@@ -1,54 +1,77 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 // will refactor login to use useForm hook -LL
+// connect the login to app through header
+// error handling
+// set user
+// change login to logout
 
-const Login = () => {
+const Login = (props) => {
+  const { register } = useForm();
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [purpose, setPurpose] = useState("");
+  const [error, setError] = useState("");
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    console.log("submitting");
+  const checkInputs = () => {
+    return username !== "" && password !== "" && purpose !== "";
+  };
+
+  const handleClick = () => {
+    checkInputs()
+      ? props.setUser({
+          username: username,
+          purpose: purpose,
+        })
+      : setError("Please complete all inputs to login.");
   };
 
   return (
     <div>
       <h2>Login to HN Mobile Account</h2>
-      <label htmlFor="username">Enter your username:</label>
-      <input
-        type="text"
-        name="username"
-        id="username"
-        placeholder="username"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <label htmlFor="password">Enter your password:</label>
-      <input
-        type="text"
-        name="password"
-        id="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <label htmlFor="purpose">
-        Good hackers only. What type of hacker are you?
-      </label>
-      <select id="purpose" onChange={(e) => Purpose(e.target.value)}>
-        <option value=""> - Please choose a purpose - </option>
-        <option value="Cybersecurity">Cybersecurity</option>
-        <option value="Hacktivist">Hacktivist</option>
-        <option value="Learner">Learner</option>
-        <option value="Engineer">Engineer</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <button className="login-btn" onClick={this.handleClick}>
-        Login
-      </button>
+      <form>
+        <label htmlFor="email">Enter your username:</label>
+        <input
+          type="text"
+          name="email"
+          id="username"
+          placeholder="username"
+          ref={register}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <label htmlFor="password">Enter your password:</label>
+        <input
+          type="text"
+          name="password"
+          id="password"
+          placeholder="password"
+          ref={register}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <label htmlFor="purpose">
+          Good hackers only. What type of hacker are you?
+        </label>
+        <select
+          id="purpose"
+          ref={register}
+          onChange={(e) => setPurpose(e.target.value)}
+        >
+          <option value="''"> - Please choose a purpose - </option>
+          <option value="Cybersecurity">Cybersecurity</option>
+          <option value="Hacktivist">Hacktivist</option>
+          <option value="Learner">Learner</option>
+          <option value="Engineer">Engineer</option>
+          <option value="Other">Other</option>
+        </select>
+        <p> {error} </p>
+        <Link to={checkInputs() && "/"}>
+          {/* <input type="submit" /> */}
+          <button onClick={handleClick}>Login</button>
+        </Link>
+      </form>
     </div>
   );
 };

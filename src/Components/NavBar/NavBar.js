@@ -72,7 +72,9 @@ const NavBar = () => {
       <NavBarTopStyled>
         <HomeLinkStyled to="/">H N</HomeLinkStyled>
         <h2>Headlines</h2>
-        <button>SIGN IN</button>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
       </NavBarTopStyled>
       <NavBarBottomStyled>
         <TopicLinkStyled to="/articles/About">About</TopicLinkStyled>

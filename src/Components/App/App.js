@@ -4,6 +4,7 @@ import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import NavBar from "../NavBar/NavBar";
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
+import Login from "../Login/Login";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
 import { Route } from "react-router-dom";
@@ -31,9 +32,14 @@ class App extends Component {
       BestStoryIDs: [],
       TopStoryIDs: [],
       homePageStories: [],
-      clickedArticle: {}
+      clickedArticle: {},
+      user: {},
     };
   }
+
+  setUser = (user) => {
+    this.setState({ user: user });
+  };
 
   componentDidMount = async () => {
     await fetchPromises("newstories").then((data) =>
@@ -78,42 +84,56 @@ class App extends Component {
   };
 
   setClickedArticle = (article) => {
-    this.setState({clickedArticle: article})
-  }
+    this.setState({ clickedArticle: article });
+  };
 
   render() {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar />
-          
-            <Route
-              exact 
-              path="/"
-              render={() => {
-                return (
-                  <HomeArticleContainer
-                    homePageStories={this.state.homePageStories}
-                  />
-                );
-              }}
-            />
-            <GlobalStyle />
-            <Route
-              path="/articles/:category"
-              exact
-              render={({ match }) => {
-                const { category } = match.params;
-                const stateKey = this.findCategory(category);
-                const dataIDs = this.state[stateKey].slice(0, 9);
-                return <AllPreviewContainer setClickedArticle={this.setClickedArticle} dataIDs={dataIDs} />;
-              }}
-            />
+
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return (
+                <HomeArticleContainer
+                  homePageStories={this.state.homePageStories}
+                />
+              );
+            }}
+          />
+          <GlobalStyle />
+          <Route
+            path="/articles/:category"
+            exact
+            render={({ match }) => {
+              const { category } = match.params;
+              const stateKey = this.findCategory(category);
+              const dataIDs = this.state[stateKey].slice(0, 9);
+              return (
+                <AllPreviewContainer
+                  setClickedArticle={this.setClickedArticle}
+                  dataIDs={dataIDs}
+                />
+              );
+            }}
+          />
           <Route
             path="/articles/:category/:id"
             exact
             render={() => {
-              return <ArticleExpanded clickedArticle={this.state.clickedArticle}/>
+              return (
+                <ArticleExpanded clickedArticle={this.state.clickedArticle} />
+              );
+            }}
+          />
+          <Route
+            path="/login"
+            exact
+            render={() => {
+              return <Login setUser={this.setUser} />;
             }}
           />
         </Wrapper>
