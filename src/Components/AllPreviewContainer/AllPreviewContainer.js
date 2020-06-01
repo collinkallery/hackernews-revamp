@@ -50,7 +50,7 @@ class AllPreviewsContainer extends Component {
   createArticlePreviews = () => {
     let articlePreviews = this.state.previews.map(preview => {
       return (
-        <ArticlePreview key={preview.id} {...preview} />
+        <ArticlePreview setClickedArticle={this.props.setClickedArticle} key={preview.id} {...preview} />
       )
     })
     return articlePreviews
