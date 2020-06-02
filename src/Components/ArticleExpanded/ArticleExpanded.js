@@ -60,10 +60,15 @@ const BtnContainer = styled.section`
   flex-direction: row;
   width: 100%;
 
+  a {
+    text-decoration: none;
+    color: inherit
+  }
+
 `
 
 const ArticleExpanded = (props) => {
-
+  console.log()
   const [isSaved, setIsSaved] = useState(false);
 
   const handleClick = () => {
@@ -79,7 +84,9 @@ const ArticleExpanded = (props) => {
     </ImgContainer>
     <p>{props.clickedArticle.description}</p>
     <BtnContainer>
-      <button>Go to Article</button>
+      <button>
+        <a href={props.clickedArticle.url}>Go to Article</a>
+      </button>
       <button onClick={handleClick}>{isSaved ? 'Remove from Saved' : 'Save this Article'}</button>
     </BtnContainer>
   </Wrapper>
