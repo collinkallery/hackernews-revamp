@@ -31,6 +31,7 @@ const NavBarTopStyled = styled.div`
     border-radius: 5px;
     background-color: ${secondaryTeal};
     margin: 3%;
+    padding: 2%;
   }
 `;
 

@@ -3,6 +3,7 @@ import { fetchPromises, fetchStories } from "../../apiCalls";
 import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import NavBar from "../NavBar/NavBar";
+import SavedContainer from "../SavedContainer/SavedContainer";
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import Login from "../Login/Login";
 import AboutPage from "../AboutPage/AboutPage";
@@ -35,6 +36,7 @@ class App extends Component {
       homePageStories: [],
       clickedArticle: {},
       user: {},
+      savedArticles: [],
     };
   }
 
@@ -92,11 +94,39 @@ class App extends Component {
     this.setState({ user: {} });
   };
 
+  updateSavedArticles = (newSaved) => {
+    const allIDs = this.state.savedArticles.reduce((acc, article) => {
+      acc.push(article.id);
+      return acc;
+    }, []);
+    if (!allIDs.includes(newSaved.id)) {
+      this.saveArticle(newSaved);
+    } else {
+      this.removeFromSaved(newSaved);
+    }
+  };
+
+  saveArticle = (article) => {
+    this.setState({
+      savedArticles: [...this.state.savedArticles, article],
+    });
+  };
+
+  removeFromSaved = (articleToRemove) => {
+    const newSavedArticles = this.state.savedArticles.filter((article) => {
+      return article.id !== articleToRemove.id;
+    });
+    console.log("saved", newSavedArticles);
+    this.setState({
+      savedArticles: newSavedArticles,
+    });
+  };
+
   render() {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
-          <NavBar user={this.state.user} resetUser={this.resetUser} />
+          <NavBar />
           <Route
             exact
             path="/about"
@@ -111,18 +141,28 @@ class App extends Component {
               return (
                 <HomeArticleContainer
                   homePageStories={this.state.homePageStories}
+                  setClickedArticle={this.setClickedArticle}
                 />
               );
             }}
           />
           <GlobalStyle />
           <Route
+            path="/Saved"
+            exact
+            render={() => {
+              return (
+                <SavedContainer savedArticles={this.state.savedArticles} />
+              );
+            }}
+          />
+          <Route
             path="/articles/:category"
             exact
             render={({ match }) => {
               const { category } = match.params;
               const stateKey = this.findCategory(category);
-              const dataIDs = this.state[stateKey].slice(0, 9);
+              const dataIDs = this.state[stateKey].slice(0, 10);
               return (
                 <AllPreviewContainer
                   setClickedArticle={this.setClickedArticle}
@@ -145,6 +185,12 @@ class App extends Component {
             exact
             render={() => {
               return <Login setUser={this.setUser} user={this.state.user} />;
+              return (
+                <ArticleExpanded
+                  updateSavedArticles={this.updateSavedArticles}
+                  clickedArticle={this.state.clickedArticle}
+                />
+              );
             }}
           />
         </Wrapper>
