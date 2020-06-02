@@ -46,11 +46,12 @@ class AllPreviewsContainer extends Component {
   }
 
   fetchPreviews = () => {
-    const url = window.location.pathname
+    let url = window.location.pathname
+    let topic = url.slice(10, url.length)
     return this.props.dataIDs.map(id => {
       const previews = fetchStories(id)
         .then(preview => {
-          preview['topic'] = url
+          preview['topic'] = topic;
           return this.setState({previews: [...this.state.previews, preview]})
       })
       return previews
