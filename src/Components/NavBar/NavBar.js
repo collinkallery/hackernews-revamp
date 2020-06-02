@@ -79,8 +79,8 @@ const NavBar = () => {
       <NavBarBottomStyled>
         <TopicLinkStyled to="/articles/About">About</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Newest">New</TopicLinkStyled>
-        <TopicLinkStyled to="/articles/Top">Top</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Best">Best</TopicLinkStyled>
+        <TopicLinkStyled to="/articles/Top">Top</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Saved">Saved</TopicLinkStyled>
       </NavBarBottomStyled>
     </NavBarStyled>
