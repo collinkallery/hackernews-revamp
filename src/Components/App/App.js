@@ -84,17 +84,16 @@ class App extends Component {
   }
 
   updatedSavedArticles = (newSaved) => {
-    console.log(newSaved);
-    // if (!this.state.savedArticles.includes(newSaved)) {
-    //   this.setState({
-    //     savedArticles: [...this.state.savedArticles, newSaved]
-    //   })
-    // } else {
-    //   const filteredSaved = this.state.savedArticles.filter(saved => saved.id != newSaved.id);
-    //   this.setState({
-    //     savedArticles: filteredSaved
-    //   })
-    // }
+    if (!this.state.savedArticles.includes(newSaved)) {
+      this.setState({
+        savedArticles: [...this.state.savedArticles, newSaved]
+      })
+    } else {
+      const filteredSaved = this.state.savedArticles.filter(saved => saved.id != newSaved.id);
+      this.setState({
+        savedArticles: filteredSaved
+      })
+    }
   }
 
   render() {
