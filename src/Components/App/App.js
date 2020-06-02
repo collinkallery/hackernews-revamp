@@ -37,10 +37,6 @@ class App extends Component {
     };
   }
 
-  setUser = (user) => {
-    this.setState({ user: user });
-  };
-
   componentDidMount = async () => {
     await fetchPromises("newstories").then((data) =>
       this.finishFetch("NewestStoryIDs", data, "Newest")
@@ -87,11 +83,19 @@ class App extends Component {
     this.setState({ clickedArticle: article });
   };
 
+  setUser = (user) => {
+    this.setState({ user: user });
+  };
+
+  resetUser = () => {
+    this.setState({ user: {} });
+  };
+
   render() {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
-          <NavBar />
+          <NavBar user={this.state.user} resetUser={this.resetUser} />
 
           <Route
             exact
@@ -133,7 +137,7 @@ class App extends Component {
             path="/login"
             exact
             render={() => {
-              return <Login setUser={this.setUser} />;
+              return <Login setUser={this.setUser} user={this.state.user} />;
             }}
           />
         </Wrapper>

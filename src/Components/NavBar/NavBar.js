@@ -64,16 +64,21 @@ const HomeLinkStyled = styled(Link)`
   border: 1px solid ${surface};
 `;
 
-// add functionality to login button -LL
-
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <NavBarStyled>
       <NavBarTopStyled>
         <HomeLinkStyled to="/">H N</HomeLinkStyled>
         <h2>Headlines</h2>
+        {props.user && (
+          <p>
+            {props.user.username} <br /> {props.user.purpose}
+          </p>
+        )}
         <Link to="/login">
-          <button>Login</button>
+          <button>
+            {!props.user ? "Logout" : "Login"}
+          </button>
         </Link>
       </NavBarTopStyled>
       <NavBarBottomStyled>

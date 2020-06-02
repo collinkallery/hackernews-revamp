@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-// will refactor login to use useForm hook -LL
-// connect the login to app through header
-// error handling
 // set user
+// pass user down to NavBar thru props
+// add username and purpose to NavBar
 // change login to logout
 
 const Login = (props) => {
@@ -68,7 +67,6 @@ const Login = (props) => {
         </select>
         <p> {error} </p>
         <Link to={checkInputs() && "/"}>
-          {/* <input type="submit" /> */}
           <button onClick={handleClick}>Login</button>
         </Link>
       </form>
