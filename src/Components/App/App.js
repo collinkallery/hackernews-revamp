@@ -84,24 +84,39 @@ class App extends Component {
   }
 
   updatedSavedArticles = (newSaved) => {
-    if (!this.state.savedArticles.includes(newSaved)) {
-      this.setState({
-        savedArticles: [...this.state.savedArticles, newSaved]
-      })
+    const allIDs = this.state.savedArticles.reduce((acc, article) => {
+      acc.push(article.id)
+      return acc;
+    }, []);
+    if (!allIDs.includes(newSaved.id)) {
+      this.saveArticle(newSaved);
     } else {
-      const filteredSaved = this.state.savedArticles.filter(saved => saved.id != newSaved.id);
-      this.setState({
-        savedArticles: filteredSaved
-      })
+      this.removeFromSaved(newSaved);
     }
   }
+
+  saveArticle = (article) => {
+    this.setState({
+      savedArticles: [...this.state.savedArticles, article]
+    })
+  }
+
+  removeFromSaved = (articleToRemove) => {
+    const newSavedArticles = this.state.savedArticles.filter(article => {
+      return article.id !== articleToRemove.id
+    })
+    console.log('saved', newSavedArticles);
+    this.setState({
+      savedArticles: newSavedArticles
+    })
+  }
+
 
   render() {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar />
-
             <Route
               exact
               path="/"
