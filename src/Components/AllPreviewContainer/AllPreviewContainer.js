@@ -1,6 +1,41 @@
 import React, { Component } from "react";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import {fetchStories} from '../../apiCalls'
+import styled from "styled-components";
+import {darkTheme} from "../../theme/globalStyle";
+
+const {
+  primaryPurple,
+  primaryBlue,
+  secondaryTeal,
+  background,
+  textColor,
+  error
+} = darkTheme;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-color: ${background};
+`
+
+const ArticleWrapper = styled.section`
+  background-color: ${background};
+  width: 90%;
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  padding: 2%;
+  border-top: 1px solid ${secondaryTeal};
+  /* border-bottom: 1px solid ${secondaryTeal}; */
+  margin: 3% 1%;
+`
+
 
 class AllPreviewsContainer extends Component {
   constructor(props) {
@@ -50,14 +85,20 @@ class AllPreviewsContainer extends Component {
   createArticlePreviews = () => {
     let articlePreviews = this.state.previews.map(preview => {
       return (
-        <ArticlePreview setClickedArticle={this.props.setClickedArticle} key={preview.id} {...preview} />
+        <ArticleWrapper>
+          <ArticlePreview setClickedArticle={this.props.setClickedArticle} key={preview.id} {...preview} />
+        </ArticleWrapper>
       )
     })
     return articlePreviews
   }
 
   render() {
-    return <div>{this.createArticlePreviews()}</div>;
+    return (
+      <Wrapper>
+        {this.createArticlePreviews()}
+      </Wrapper>
+    )
   }
 };
 
