@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {darkTheme} from "../../theme/globalStyle";
 
@@ -64,6 +64,13 @@ const BtnContainer = styled.section`
 
 const ArticleExpanded = (props) => {
 
+  const [isSaved, setIsSaved] = useState(false);
+
+  const handleClick = () => {
+    setIsSaved(!isSaved);
+    props.updateSavedArticles(props.clickedArticle);
+  }
+
   return (
   <Wrapper>
     <h2>{props.clickedArticle.title}</h2>
@@ -72,8 +79,8 @@ const ArticleExpanded = (props) => {
     </ImgContainer>
     <p>{props.clickedArticle.description}</p>
     <BtnContainer>
-      <button>View Whole Article</button>
-      <button onClick={() => props.updatedSavedArticles(props.clickedArticle)}>Save this Article</button>
+      <button>Go to Article</button>
+      <button onClick={handleClick}>{isSaved ? 'Remove from Saved' : 'Save this Article'}</button>
     </BtnContainer>
   </Wrapper>
   )

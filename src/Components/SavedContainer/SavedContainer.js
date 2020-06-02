@@ -36,19 +36,24 @@ const ArticleWrapper = styled.section`
 `
 
 const SavedContainer = (props) => {
-  const articlesToDisplay = () => {
-    let articles = props.savedArticles.map(article => {
-      return (
-        <ArticleWrapper>
-          <ArticlePreview {...article} key={article.id} />
-        </ArticleWrapper>
-      )
-    })
+
+  const innerText = () => {
+    if (props.savedArticles.length > 0) {
+      let articles = props.savedArticles.map(article => {
+        return (
+          <ArticleWrapper>
+            <ArticlePreview {...article} key={article.id} />
+          </ArticleWrapper>
+        )
+      })
     return articles;
+  } else {
+    return <h2>You have not saved any articles yet!</h2>
   }
+}
   return (
     <Wrapper>
-      {articlesToDisplay()}
+      {innerText()}
     </Wrapper>
   )
 }

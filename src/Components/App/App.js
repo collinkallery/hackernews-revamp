@@ -33,7 +33,7 @@ class App extends Component {
       TopStoryIDs: [],
       homePageStories: [],
       clickedArticle: {},
-      savedArticles: []
+      savedArticles: [],
     };
   }
 
@@ -83,7 +83,7 @@ class App extends Component {
     this.setState({clickedArticle: article})
   }
 
-  updatedSavedArticles = (newSaved) => {
+  updateSavedArticles = (newSaved) => {
     const allIDs = this.state.savedArticles.reduce((acc, article) => {
       acc.push(article.id)
       return acc;
@@ -124,6 +124,7 @@ class App extends Component {
                 return (
                   <HomeArticleContainer
                     homePageStories={this.state.homePageStories}
+                    setClickedArticle={this.setClickedArticle}
                   />
                 );
               }}
@@ -142,15 +143,18 @@ class App extends Component {
               render={({ match }) => {
                 const { category } = match.params;
                 const stateKey = this.findCategory(category);
-                const dataIDs = this.state[stateKey].slice(0, 9);
-                return <AllPreviewContainer setClickedArticle={this.setClickedArticle} dataIDs={dataIDs} />;
+                const dataIDs = this.state[stateKey].slice(0, 10);
+                return <AllPreviewContainer
+                  setClickedArticle={this.setClickedArticle}
+                  dataIDs={dataIDs}
+                />;
               }}
             />
           <Route
             path="/articles/:category/:id"
             exact
             render={() => {
-              return <ArticleExpanded updatedSavedArticles={this.updatedSavedArticles} clickedArticle={this.state.clickedArticle}/>
+              return <ArticleExpanded updateSavedArticles={this.updateSavedArticles} clickedArticle={this.state.clickedArticle}/>
             }}
           />
         </Wrapper>
