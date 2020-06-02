@@ -31,7 +31,8 @@ class App extends Component {
       BestStoryIDs: [],
       TopStoryIDs: [],
       homePageStories: [],
-      clickedArticle: {}
+      clickedArticle: {},
+      savedArticles: []
     };
   }
 
@@ -81,14 +82,28 @@ class App extends Component {
     this.setState({clickedArticle: article})
   }
 
+  updatedSavedArticles = (newSaved) => {
+    console.log(newSaved);
+    // if (!this.state.savedArticles.includes(newSaved)) {
+    //   this.setState({
+    //     savedArticles: [...this.state.savedArticles, newSaved]
+    //   })
+    // } else {
+    //   const filteredSaved = this.state.savedArticles.filter(saved => saved.id != newSaved.id);
+    //   this.setState({
+    //     savedArticles: filteredSaved
+    //   })
+    // }
+  }
+
   render() {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar />
-          
+
             <Route
-              exact 
+              exact
               path="/"
               render={() => {
                 return (
@@ -113,7 +128,7 @@ class App extends Component {
             path="/articles/:category/:id"
             exact
             render={() => {
-              return <ArticleExpanded clickedArticle={this.state.clickedArticle}/>
+              return <ArticleExpanded updatedSavedArticles={this.updatedSavedArticles} clickedArticle={this.state.clickedArticle}/>
             }}
           />
         </Wrapper>
