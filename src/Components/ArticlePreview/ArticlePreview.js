@@ -74,7 +74,7 @@ const ArticlePreview = (props) => {
     const previewData = {
       ...props,
       description,
-      image,                  
+      image,
     }
     props.setClickedArticle(previewData)
   }
