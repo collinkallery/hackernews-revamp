@@ -80,7 +80,7 @@ const NavBar = () => {
         <TopicLinkStyled to="/articles/Newest">New</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Top">Top</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Best">Best</TopicLinkStyled>
-        <TopicLinkStyled to="/articles/Saved">Saved</TopicLinkStyled>
+        <TopicLinkStyled to="/Saved">Saved</TopicLinkStyled>
       </NavBarBottomStyled>
     </NavBarStyled>
   );
