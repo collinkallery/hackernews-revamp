@@ -77,12 +77,12 @@ const NavBar = (props) => {
         )}
         <Link to="/login">
           <button>
-            {!props.user ? "Logout" : "Login"}
+            {props.user ? "Logout" : "Login"}
           </button>
         </Link>
       </NavBarTopStyled>
       <NavBarBottomStyled>
-        <TopicLinkStyled to="/articles/About">About</TopicLinkStyled>
+        <TopicLinkStyled to="/About">About</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Newest">New</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Best">Best</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Top">Top</TopicLinkStyled>

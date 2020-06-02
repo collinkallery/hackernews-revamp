@@ -5,6 +5,7 @@ import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import NavBar from "../NavBar/NavBar";
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import Login from "../Login/Login";
+import AboutPage from "../AboutPage/AboutPage";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
 import { Route } from "react-router-dom";
@@ -96,7 +97,13 @@ class App extends Component {
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar user={this.state.user} resetUser={this.resetUser} />
-
+          <Route
+            exact
+            path="/about"
+            render={() => {
+              return <AboutPage />;
+            }}
+          />
           <Route
             exact
             path="/"
