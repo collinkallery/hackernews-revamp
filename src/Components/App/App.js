@@ -3,6 +3,7 @@ import { fetchPromises, fetchStories } from "../../apiCalls";
 import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import NavBar from "../NavBar/NavBar";
+import SavedContainer from '../SavedContainer/SavedContainer';
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
@@ -114,6 +115,13 @@ class App extends Component {
               }}
             />
             <GlobalStyle />
+            <Route
+              path="/Saved"
+              exact
+              render={() => {
+                return <SavedContainer savedArticles={this.state.savedArticles} />
+              }}
+            />
             <Route
               path="/articles/:category"
               exact
