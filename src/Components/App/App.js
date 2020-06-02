@@ -3,8 +3,10 @@ import { fetchPromises, fetchStories } from "../../apiCalls";
 import HomeArticleContainer from "../HomeArticleContainer/HomeArticleContainer";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import NavBar from "../NavBar/NavBar";
-import SavedContainer from '../SavedContainer/SavedContainer';
+import SavedContainer from "../SavedContainer/SavedContainer";
 import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
+import Login from "../Login/Login";
+import AboutPage from "../AboutPage/AboutPage";
 import styled, { ThemeProvider } from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
 import { Route } from "react-router-dom";
@@ -33,6 +35,7 @@ class App extends Component {
       TopStoryIDs: [],
       homePageStories: [],
       clickedArticle: {},
+      user: {},
       savedArticles: [],
     };
   }
@@ -80,12 +83,20 @@ class App extends Component {
   };
 
   setClickedArticle = (article) => {
-    this.setState({clickedArticle: article})
-  }
+    this.setState({ clickedArticle: article });
+  };
+
+  setUser = (user) => {
+    this.setState({ user: user });
+  };
+
+  resetUser = () => {
+    this.setState({ user: {} });
+  };
 
   updateSavedArticles = (newSaved) => {
     const allIDs = this.state.savedArticles.reduce((acc, article) => {
-      acc.push(article.id)
+      acc.push(article.id);
       return acc;
     }, []);
     if (!allIDs.includes(newSaved.id)) {
@@ -93,68 +104,93 @@ class App extends Component {
     } else {
       this.removeFromSaved(newSaved);
     }
-  }
+  };
 
   saveArticle = (article) => {
     this.setState({
-      savedArticles: [...this.state.savedArticles, article]
-    })
-  }
+      savedArticles: [...this.state.savedArticles, article],
+    });
+  };
 
   removeFromSaved = (articleToRemove) => {
-    const newSavedArticles = this.state.savedArticles.filter(article => {
-      return article.id !== articleToRemove.id
-    })
-    console.log('saved', newSavedArticles);
+    const newSavedArticles = this.state.savedArticles.filter((article) => {
+      return article.id !== articleToRemove.id;
+    });
+    console.log("saved", newSavedArticles);
     this.setState({
-      savedArticles: newSavedArticles
-    })
-  }
-
+      savedArticles: newSavedArticles,
+    });
+  };
 
   render() {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
           <NavBar />
-            <Route
-              exact
-              path="/"
-              render={() => {
-                return (
-                  <HomeArticleContainer
-                    homePageStories={this.state.homePageStories}
-                    setClickedArticle={this.setClickedArticle}
-                  />
-                );
-              }}
-            />
-            <GlobalStyle />
-            <Route
-              path="/Saved"
-              exact
-              render={() => {
-                return <SavedContainer savedArticles={this.state.savedArticles} />
-              }}
-            />
-            <Route
-              path="/articles/:category"
-              exact
-              render={({ match }) => {
-                const { category } = match.params;
-                const stateKey = this.findCategory(category);
-                const dataIDs = this.state[stateKey].slice(0, 10);
-                return <AllPreviewContainer
+          <Route
+            exact
+            path="/about"
+            render={() => {
+              return <AboutPage />;
+            }}
+          />
+          <Route
+            exact
+            path="/"
+            render={() => {
+              return (
+                <HomeArticleContainer
+                  homePageStories={this.state.homePageStories}
+                  setClickedArticle={this.setClickedArticle}
+                />
+              );
+            }}
+          />
+          <GlobalStyle />
+          <Route
+            path="/Saved"
+            exact
+            render={() => {
+              return (
+                <SavedContainer savedArticles={this.state.savedArticles} />
+              );
+            }}
+          />
+          <Route
+            path="/articles/:category"
+            exact
+            render={({ match }) => {
+              const { category } = match.params;
+              const stateKey = this.findCategory(category);
+              const dataIDs = this.state[stateKey].slice(0, 10);
+              return (
+                <AllPreviewContainer
                   setClickedArticle={this.setClickedArticle}
                   dataIDs={dataIDs}
-                />;
-              }}
-            />
+                />
+              );
+            }}
+          />
           <Route
             path="/articles/:category/:id"
             exact
             render={() => {
-              return <ArticleExpanded updateSavedArticles={this.updateSavedArticles} clickedArticle={this.state.clickedArticle}/>
+              return (
+                <ArticleExpanded clickedArticle={this.state.clickedArticle} />
+              );
+            }}
+          />
+          <Route
+            path="/login"
+            exact
+            render={() => {
+              return <Login setUser={this.setUser} user={this.state.user} />;
+              return (
+                <ArticleExpanded
+                  updateSavedArticles={this.updateSavedArticles}
+                  clickedArticle={this.state.clickedArticle}
+                />
+              );
             }}
           />
         </Wrapper>
