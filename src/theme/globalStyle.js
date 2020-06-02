@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+@import ErrorImg from "./HN.png";
 
   *,
   *:after,
