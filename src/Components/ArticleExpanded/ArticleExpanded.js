@@ -63,7 +63,7 @@ const BtnContainer = styled.section`
 `
 
 const ArticleExpanded = (props) => {
-  console.log('hi', props);
+
   return (
   <Wrapper>
     <h2>{props.clickedArticle.title}</h2>
@@ -73,7 +73,7 @@ const ArticleExpanded = (props) => {
     <p>{props.clickedArticle.description}</p>
     <BtnContainer>
       <button>View Whole Article</button>
-      <button>Save this Article</button>
+      <button onClick={() => props.updatedSavedArticles(props.clickedArticle)}>Save this Article</button>
     </BtnContainer>
   </Wrapper>
   )
