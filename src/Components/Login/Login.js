@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
+import { darkTheme } from "../../theme/globalStyle";
 import PropTypes from "prop-types";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { secondaryTeal, surface, error } = darkTheme;
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,6 +21,10 @@ const Wrapper = styled.div`
   text-transform: uppercase;
   font-weight: bold;
   box-shadow: 1px 1px 1px ${surface};
+}
+
+p {
+  color: ${error}
 }
   }
 `;

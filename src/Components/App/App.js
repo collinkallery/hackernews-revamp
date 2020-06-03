@@ -8,17 +8,10 @@ import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import Login from "../Login/Login";
 import AboutPage from "../AboutPage/AboutPage";
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
+import { GlobalStyle, darkTheme } from "../../theme/globalStyle";
 import { Route } from "react-router-dom";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { background } = darkTheme;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -92,7 +85,7 @@ class App extends Component {
   };
 
   resetUser = () => {
-    console.log('button')
+    console.log("button");
     this.setState({ user: "" });
   };
 

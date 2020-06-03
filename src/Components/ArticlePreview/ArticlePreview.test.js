@@ -1,12 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import ArticlePreview from "./ArticlePreview";
-import {
-  render,
-  fireEvent,
-  getByTestId,
-  waitFor,
-} from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { fetchImage } from "../../apiCalls";
 import { MemoryRouter } from "react-router-dom";

@@ -3,14 +3,7 @@ import styled from "styled-components";
 import { darkTheme } from "../../theme/globalStyle";
 import PropTypes from "prop-types";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { primaryBlue, secondaryTeal, background, surface } = darkTheme;
 
 const Wrapper = styled.div`
   display: flex;
@@ -98,6 +91,11 @@ const ArticleExpanded = (props) => {
       </BtnContainer>
     </Wrapper>
   );
+};
+
+ArticleExpanded.propTypes = {
+  clickedArticle: PropTypes.object,
+  updateSavedArticles: PropTypes.func,
 };
 
 export default ArticleExpanded;

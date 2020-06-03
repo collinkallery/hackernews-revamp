@@ -4,14 +4,7 @@ import { Link } from "react-router-dom";
 import { darkTheme } from "../../theme/globalStyle";
 import PropTypes from "prop-types";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { secondaryTeal, background, surface } = darkTheme;
 
 const NavBarStyled = styled.header`
   width: 100%;

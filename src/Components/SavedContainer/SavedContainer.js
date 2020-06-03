@@ -4,14 +4,7 @@ import { darkTheme } from "../../theme/globalStyle";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import PropTypes from "prop-types";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { secondaryTeal, background } = darkTheme;
 
 const Wrapper = styled.div`
   display: flex;

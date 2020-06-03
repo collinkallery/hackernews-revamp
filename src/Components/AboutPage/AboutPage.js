@@ -1,15 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
+import { darkTheme } from "../../theme/globalStyle";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { primaryPurple } = darkTheme;
 
 const Wrapper = styled.section`
   margin: 0.5em;

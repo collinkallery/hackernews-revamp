@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import styled from "styled-components";
 import { fetchImage } from "../../apiCalls";
 import { darkTheme } from "../../theme/globalStyle";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { background, surface } = darkTheme;
 
 const Wrapper = styled.div`
   background-color: ${background};
@@ -88,6 +80,12 @@ const ArticlePreview = (props) => {
       </LinkStyled>
     </Wrapper>
   );
+};
+
+ArticlePreview.propTypes = {
+  setClickedArticle: PropTypes.func,
+  key: PropTypes.number,
+  preview: PropTypes.object,
 };
 
 export default ArticlePreview;

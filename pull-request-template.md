@@ -14,13 +14,12 @@
 ### Directory modified:
 
 - [ ] - App
+- [ ] - AboutPage
 - [ ] - Article
 - [ ] - ArticleContainer
 - [ ] - ArticleExpanded
 - [ ] - ArticlePreview
-- [ ] - Comment
-- [ ] - CommentContainer
+- [ ] - SavedContainer
 - [ ] - Login
 - [ ] - NavBar
-- [ ] - UserInfo
-- [ ] - WelcomePage
+- [ ] - theme

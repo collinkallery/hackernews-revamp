@@ -22,10 +22,6 @@ export const GlobalStyle = createGlobalStyle`
     color: #FFFFFF;
     font-family: 'News Cycle', sans-serif;
   }
-
-  #blockColorblindContent {
-    display: none;
-  }
 `;
 
 export const darkTheme = {

@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import Login from "./Login";
 import { render, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
