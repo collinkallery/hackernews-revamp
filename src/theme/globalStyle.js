@@ -28,8 +28,6 @@ export const GlobalStyle = createGlobalStyle`
   }
 `;
 
-// surface = text color
-
 export const darkTheme = {
   primaryPurple: "#BB86FC",
   primaryBlue: "#3700B3",
