@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
 import styled from "styled-components";
 import { fetchImage } from "../../apiCalls";
@@ -51,15 +51,18 @@ const ArticlePreview = (props) => {
 
   // refactor if/else into ternary
   fetchImage(props.url).then((data) => {
-    let imageUrl = ''
-    if (data === "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg") {
-      imageUrl = data
+    let imageUrl = "";
+    if (
+      data ===
+      "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg"
+    ) {
+      imageUrl = data;
       description = "No image to display";
     } else {
       imageUrl = data.hybridGraph.image;
       description = data.hybridGraph.description;
     }
-    return (setImage(imageUrl), setDescription(description))
+    return setImage(imageUrl), setDescription(description);
   });
 
   useEffect(() => {
@@ -68,15 +71,14 @@ const ArticlePreview = (props) => {
     };
   }, []);
 
-
   const handleClickedArticle = () => {
     const previewData = {
       ...props,
       description,
       image,
-    }
-    props.setClickedArticle(previewData)
-  }
+    };
+    props.setClickedArticle(previewData);
+  };
 
   return (
     <Wrapper>
