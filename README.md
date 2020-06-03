@@ -33,4 +33,4 @@ Looking ahead, we'd like to have a more robust testing suite with more integrati
 
 ## The NEW Hacker News In Action
 ![gif1](https://media.giphy.com/media/VgwHBwIPGW34lF2wcX/giphy.gif)
-![gif2](https://media.giphy.com/media/VgwHBwIPGW34lF2wcX/giphy.gif)
+![gif2](https://media.giphy.com/media/KbwIN6CeQvsTU0Mdhi/giphy.gif)
