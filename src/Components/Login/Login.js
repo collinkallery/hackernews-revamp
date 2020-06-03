@@ -13,33 +13,31 @@ const {
   error,
 } = darkTheme;
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 4%;
+
+  button {
+  background-color: ${secondaryTeal};
+  margin: 2%;
+  border: none;
+  padding: 1%;
+  font-size: .8em;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 1px 1px 1px ${surface};
+}
+  }
+`;
+
 const Login = (props) => {
-
-  // const Wrapper = styled.div`
-  //   display: flex;
-  //   flex-direction: column;
-  //   padding: 4%;
-
-  //   button {
-  //   background-color: ${secondaryTeal};
-  //   margin: 2%;
-  //   border: none;
-  //   padding: 1%;
-  //   font-size: .8em;
-  //   border-radius: 2px;
-  //   text-transform: uppercase;
-  //   font-weight: bold;
-  //   box-shadow: 1px 1px 1px ${surface};
-  // }
-  //   }
-  // `;
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [purpose, setPurpose] = useState("");
   const [error, setError] = useState("");
 
-  
   const checkInputs = () => {
     return username !== "" && password !== "" && purpose !== "";
   };
@@ -53,16 +51,14 @@ const Login = (props) => {
       : setError("Please complete all inputs to login.");
   };
 
-
   return (
-    // <Wrapper>
-    <div>
+    <Wrapper>
       <h2>Login to HN Mobile Account</h2>
       <form>
-        <label htmlFor="email">Enter your username: </label>
+        <label htmlFor="username">Enter your username: </label>
         <input
           type="text"
-          name="email"
+          name="username"
           id="username"
           placeholder="username"
           onChange={(e) => setUsername(e.target.value)}
@@ -80,10 +76,7 @@ const Login = (props) => {
         <label htmlFor="purpose">
           Good hackers only. What type of hacker are you?
         </label>
-        <select
-          id="purpose"
-          onChange={(e) => setPurpose(e.target.value)}
-        >
+        <select id="purpose" onChange={(e) => setPurpose(e.target.value)}>
           <option value="''"> - Please choose a purpose - </option>
           <option value="Cybersecurity">Cybersecurity</option>
           <option value="Hacktivist">Hacktivist</option>
@@ -96,8 +89,7 @@ const Login = (props) => {
           <button onClick={handleClick}>Login</button>
         </Link>
       </form>
-      </div>
-
+    </Wrapper>
   );
 };
 

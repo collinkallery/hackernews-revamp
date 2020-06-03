@@ -35,7 +35,7 @@ class App extends Component {
       TopStoryIDs: [],
       homePageStories: [],
       clickedArticle: {},
-      user: {},
+      user: "",
       savedArticles: [],
     };
   }
@@ -55,7 +55,6 @@ class App extends Component {
   finishFetch = async (stateKey, fetchedData, topic) => {
     this.setState({ [stateKey]: fetchedData });
     const story = await this.getStories(this.state[stateKey][0]);
-    console.log(this.state.homePageStories);
     this.addTopic(story, topic);
     return story;
   };
@@ -93,7 +92,8 @@ class App extends Component {
   };
 
   resetUser = () => {
-    this.setState({ user: {} });
+    console.log('button')
+    this.setState({ user: "" });
   };
 
   updateSavedArticles = (newSaved) => {
@@ -128,7 +128,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
-          <NavBar user={this.state.user} />
+          <NavBar user={this.state.user} resetUser={this.resetUser} />
           <Route
             exact
             path="/about"

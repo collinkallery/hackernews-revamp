@@ -88,7 +88,9 @@ const NavBar = (props) => {
           </p>
         )}
         <Link to="/login">
-          <button>{props.user ? "Logout" : "Login"}</button>
+          <button onClick={() => props.resetUser()}>
+            {props.user ? "Logout" : "Login"}
+          </button>
         </Link>
       </NavBarTopStyled>
       <NavBarBottomStyled>
