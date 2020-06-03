@@ -22,13 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     color: #FFFFFF;
     font-family: 'News Cycle', sans-serif;
   }
-
-  #blockColorblindContent {
-    display: none;
-  }
 `;
-
-// surface = text color
 
 export const darkTheme = {
   primaryPurple: "#BB86FC",

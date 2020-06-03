@@ -1,15 +1,35 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { darkTheme } from "../../theme/globalStyle";
+import PropTypes from "prop-types";
 
-// set user
-// pass user down to NavBar thru props
-// add username and purpose to NavBar
-// change login to logout
+const { secondaryTeal, surface, error } = darkTheme;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 4%;
+
+  button {
+  background-color: ${secondaryTeal};
+  margin: 2%;
+  border: none;
+  padding: 1%;
+  font-size: .8em;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 1px 1px 1px ${surface};
+}
+
+p {
+  color: ${error}
+}
+  }
+`;
 
 const Login = (props) => {
-  const { register } = useForm();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [purpose, setPurpose] = useState("");
@@ -29,35 +49,31 @@ const Login = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       <h2>Login to HN Mobile Account</h2>
       <form>
-        <label htmlFor="email">Enter your username:</label>
+        <label htmlFor="username">Enter your username: </label>
         <input
           type="text"
-          name="email"
+          name="username"
           id="username"
           placeholder="username"
-          // ref={register}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="password">Enter your password:</label>
+        <br />
+        <label htmlFor="password">Enter your password: </label>
         <input
           type="text"
           name="password"
           id="password"
           placeholder="password"
-          // ref={register}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <br />
         <label htmlFor="purpose">
           Good hackers only. What type of hacker are you?
         </label>
-        <select
-          id="purpose"
-          // ref={register}
-          onChange={(e) => setPurpose(e.target.value)}
-        >
+        <select id="purpose" onChange={(e) => setPurpose(e.target.value)}>
           <option value="''"> - Please choose a purpose - </option>
           <option value="Cybersecurity">Cybersecurity</option>
           <option value="Hacktivist">Hacktivist</option>
@@ -70,8 +86,13 @@ const Login = (props) => {
           <button onClick={handleClick}>Login</button>
         </Link>
       </form>
-    </div>
+    </Wrapper>
   );
+};
+
+Login.propTypes = {
+  setUser: PropTypes.func,
+  resetUser: PropTypes.func,
 };
 
 export default Login;

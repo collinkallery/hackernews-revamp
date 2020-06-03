@@ -8,17 +8,10 @@ import AllPreviewContainer from "../AllPreviewContainer/AllPreviewContainer";
 import Login from "../Login/Login";
 import AboutPage from "../AboutPage/AboutPage";
 import styled, { ThemeProvider } from "styled-components";
-import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
+import { GlobalStyle, darkTheme } from "../../theme/globalStyle";
 import { Route } from "react-router-dom";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { background } = darkTheme;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -35,29 +28,28 @@ class App extends Component {
       TopStoryIDs: [],
       homePageStories: [],
       clickedArticle: {},
-      user: {},
+      user: "",
       savedArticles: [],
     };
   }
 
   componentDidMount = async () => {
     await fetchPromises("newstories").then((data) => {
-      return this.finishFetch("NewestStoryIDs", data, "Newest")
-    })
+      return this.finishFetch("NewestStoryIDs", data, "Newest");
+    });
     await fetchPromises("beststories").then((data) => {
-      return this.finishFetch("BestStoryIDs", data, "Best")
+      return this.finishFetch("BestStoryIDs", data, "Best");
     });
     await fetchPromises("topstories").then((data) => {
-      return this.finishFetch("TopStoryIDs", data, "Top")
+      return this.finishFetch("TopStoryIDs", data, "Top");
     });
   };
 
   finishFetch = async (stateKey, fetchedData, topic) => {
     this.setState({ [stateKey]: fetchedData });
     const story = await this.getStories(this.state[stateKey][0]);
-    console.log(this.state.homePageStories)
     this.addTopic(story, topic);
-    return story 
+    return story;
   };
 
   getStories = async (id) => {
@@ -67,10 +59,9 @@ class App extends Component {
   };
 
   addTopic = (story, topic) => {
-    const matchingStory = this.state.homePageStories.find(specificStory => {
-        return specificStory.id === story.id
-      }
-    );
+    const matchingStory = this.state.homePageStories.find((specificStory) => {
+      return specificStory.id === story.id;
+    });
     matchingStory["topic"] = topic;
     const index = this.state.homePageStories.indexOf(matchingStory);
     this.state.homePageStories.splice(index, 1);
@@ -94,7 +85,8 @@ class App extends Component {
   };
 
   resetUser = () => {
-    this.setState({ user: {} });
+    console.log("button");
+    this.setState({ user: "" });
   };
 
   updateSavedArticles = (newSaved) => {
@@ -129,7 +121,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
-          <NavBar />
+          <NavBar user={this.state.user} resetUser={this.resetUser} />
           <Route
             exact
             path="/about"
@@ -179,9 +171,10 @@ class App extends Component {
             exact
             render={() => {
               return (
-                <ArticleExpanded 
-                clickedArticle={this.state.clickedArticle}
-                updateSavedArticles={this.updateSavedArticles} />
+                <ArticleExpanded
+                  clickedArticle={this.state.clickedArticle}
+                  updateSavedArticles={this.updateSavedArticles}
+                />
               );
             }}
           />

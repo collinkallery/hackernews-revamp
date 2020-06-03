@@ -1,15 +1,32 @@
 import React from "react";
 import styled from "styled-components";
+import { darkTheme } from "../../theme/globalStyle";
+
+const { primaryPurple } = darkTheme;
+
+const Wrapper = styled.section`
+  margin: 0.5em;
+
+  a {
+    color: ${primaryPurple};
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+  }
+
+  p {
+    padding: 0.2em;
+  }
+`;
 
 const AboutPage = () => {
   return (
-    <section>
-      <h2>Welcome to Hacker News</h2>
+    <Wrapper>
+      <h2>Welcome to Hacker News Mobile</h2>
 
       <p>
-        Hacker News Mobile is a bit different from other community sites, and
-        we'd appreciate it if you'd take a minute to read the following as well
-        as the
+        Hacker News is a bit different from other community sites, and we'd
+        appreciate it if you'd take a minute to read the following as well as
+        the
         <a href="https://news.ycombinator.com/newsguidelines.html">
           official guidelines
         </a>
@@ -17,10 +34,11 @@ const AboutPage = () => {
       </p>
 
       <p>
-        On HN mobile you can view the ten newest, ten all time best and top ten
+        On HN mobile you can view the 10 newest, 10 all time best and top 10
         current articles posted and upvoted by the HN community. You can save
-        articles to reread or return to. This gives you space to consume quality content
-        that matters to you mindfully. Then you can visit the website to upvote or comment with more intention.
+        articles to reread or return to. This gives you space to consume quality
+        content that matters to you mindfully. You can visit the website to
+        upvote or comment with more intention.
       </p>
 
       <p>
@@ -82,7 +100,7 @@ const AboutPage = () => {
         mean you can't disagree. But disagree without calling names. If you're
         right, your argument will be more convincing without them.
       </p>
-    </section>
+    </Wrapper>
   );
 };
 

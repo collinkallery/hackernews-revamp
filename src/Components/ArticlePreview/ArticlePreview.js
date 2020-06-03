@@ -1,18 +1,11 @@
-import React, { useState, useEffect} from "react";
-import ArticleExpanded from "../ArticleExpanded/ArticleExpanded";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { fetchImage } from "../../apiCalls";
 import { darkTheme } from "../../theme/globalStyle";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  surface,
-  error,
-} = darkTheme;
+const { background, surface } = darkTheme;
 
 const Wrapper = styled.div`
   background-color: ${background};
@@ -51,15 +44,15 @@ const ArticlePreview = (props) => {
 
   // refactor if/else into ternary
   fetchImage(props.url).then((data) => {
-    let imageUrl = ''
-    if (data === "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg") {
-      imageUrl = data
+    let imageUrl = "";
+    if (data === `../../theme/HN.png`) {
+      imageUrl = data;
       description = "No image to display";
     } else {
       imageUrl = data.hybridGraph.image;
       description = data.hybridGraph.description;
     }
-    return (setImage(imageUrl), setDescription(description))
+    return setImage(imageUrl), setDescription(description);
   });
 
   useEffect(() => {
@@ -68,15 +61,14 @@ const ArticlePreview = (props) => {
     };
   }, []);
 
-
   const handleClickedArticle = () => {
     const previewData = {
       ...props,
       description,
       image,
-    }
-    props.setClickedArticle(previewData)
-  }
+    };
+    props.setClickedArticle(previewData);
+  };
 
   return (
     <Wrapper>
@@ -88,6 +80,12 @@ const ArticlePreview = (props) => {
       </LinkStyled>
     </Wrapper>
   );
+};
+
+ArticlePreview.propTypes = {
+  setClickedArticle: PropTypes.func,
+  key: PropTypes.number,
+  preview: PropTypes.object,
 };
 
 export default ArticlePreview;

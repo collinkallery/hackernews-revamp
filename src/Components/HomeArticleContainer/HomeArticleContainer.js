@@ -1,9 +1,10 @@
 import React from "react";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import styled from "styled-components";
-import {darkTheme} from "../../theme/globalStyle";
+import { darkTheme } from "../../theme/globalStyle";
+import PropTypes from "prop-types";
 
-const {primaryPurple, primaryBlue, secondaryTeal, background, textColor, error} = darkTheme;
+const { secondaryTeal, background } = darkTheme;
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,9 +14,8 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   width: 100%;
   height: 100%;
-  border: 2px solid black;
   background-color: ${background};
-`
+`;
 
 const ArticleWrapper = styled.section`
   background-color: ${background};
@@ -32,23 +32,27 @@ const ArticleWrapper = styled.section`
     padding: 0;
     border-bottom: 2px solid ${secondaryTeal};
   }
-`
+`;
 
 const HomeArticleContainer = (props) => {
-
-  const articlesToDisplay = props.homePageStories.map(story => {
+  const articlesToDisplay = props.homePageStories.map((story) => {
     return (
       <ArticleWrapper>
         <p className="topic-header">{story.topic} Story</p>
-        <ArticlePreview setClickedArticle={props.setClickedArticle} {...story} key={story.id}/>
+        <ArticlePreview
+          setClickedArticle={props.setClickedArticle}
+          {...story}
+          key={story.id}
+        />
       </ArticleWrapper>
-    )
-  })
-  return (
-    <Wrapper>
-      {articlesToDisplay}
-    </Wrapper>
-  )
-}
+    );
+  });
+  return <Wrapper>{articlesToDisplay}</Wrapper>;
+};
+
+HomeArticleContainer.propTypes = {
+  homePageStories: PropTypes.array,
+  setClickedArticle: PropTypes.func,
+};
 
 export default HomeArticleContainer;

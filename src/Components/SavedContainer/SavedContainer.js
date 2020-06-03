@@ -1,16 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import {darkTheme} from "../../theme/globalStyle";
-import ArticlePreview from '../ArticlePreview/ArticlePreview';
+import { darkTheme } from "../../theme/globalStyle";
+import ArticlePreview from "../ArticlePreview/ArticlePreview";
+import PropTypes from "prop-types";
 
-const {
-  primaryPurple,
-  primaryBlue,
-  secondaryTeal,
-  background,
-  textColor,
-  error
-} = darkTheme;
+const { secondaryTeal, background } = darkTheme;
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +15,7 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   background-color: ${background};
-`
+`;
 
 const ArticleWrapper = styled.section`
   background-color: ${background};
@@ -31,31 +25,29 @@ const ArticleWrapper = styled.section`
   flex-direction: column;
   padding: 2%;
   border-top: 1px solid ${secondaryTeal};
-  /* border-bottom: 1px solid ${secondaryTeal}; */
   margin: 3% 1%;
-`
+`;
 
 const SavedContainer = (props) => {
-
   const innerText = () => {
     if (props.savedArticles.length > 0) {
-      let articles = props.savedArticles.map(article => {
+      let articles = props.savedArticles.map((article) => {
         return (
           <ArticleWrapper>
             <ArticlePreview {...article} key={article.id} />
           </ArticleWrapper>
-        )
-      })
-    return articles;
-  } else {
-    return <h2>You have not saved any articles yet!</h2>
-  }
-}
-  return (
-    <Wrapper>
-      {innerText()}
-    </Wrapper>
-  )
-}
+        );
+      });
+      return articles;
+    } else {
+      return <h2>You have not saved any articles yet!</h2>;
+    }
+  };
+  return <Wrapper>{innerText()}</Wrapper>;
+};
+
+SavedContainer.propTypes = {
+  savedArticles: PropTypes.array,
+};
 
 export default SavedContainer;
