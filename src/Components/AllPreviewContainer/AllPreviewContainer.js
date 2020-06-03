@@ -3,7 +3,7 @@ import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import { fetchStories } from "../../apiCalls";
 import styled from "styled-components";
 import { darkTheme } from "../../theme/globalStyle";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const {
   primaryPurple,
@@ -100,5 +100,10 @@ class AllPreviewsContainer extends Component {
     return <Wrapper>{this.createArticlePreviews()}</Wrapper>;
   }
 }
+
+AllPreviewsContainer.propTypes = {
+  setClickedArticle: PropTypes.func,
+  dataIDs: PropTypes.array,
+};
 
 export default AllPreviewsContainer;

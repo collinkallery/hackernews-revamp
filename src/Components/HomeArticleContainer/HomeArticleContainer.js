@@ -2,7 +2,7 @@ import React from "react";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import styled from "styled-components";
 import { darkTheme } from "../../theme/globalStyle";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const {
   primaryPurple,
@@ -55,6 +55,11 @@ const HomeArticleContainer = (props) => {
     );
   });
   return <Wrapper>{articlesToDisplay}</Wrapper>;
+};
+
+HomeArticleContainer.propTypes = {
+  homePageStories: PropTypes.array,
+  setClickedArticle: PropTypes.func,
 };
 
 export default HomeArticleContainer;
