@@ -84,7 +84,7 @@ const ArticleExpanded = (props) => {
       <ImgContainer>
         <img
           src={props.clickedArticle.image}
-          alt={props.clickedArticle.image}
+          alt={props.clickedArticle.description}
         />
       </ImgContainer>
       <p>{props.clickedArticle.description}</p>
