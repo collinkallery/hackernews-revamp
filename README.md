@@ -29,6 +29,10 @@ During the third quarter of our time at Turing School of Software & Design, we w
 
 ## Challenges
 
+We all believe that we may have bitten off a bit more than we could chew when we decided to re-create the Hacker News website in just under a week. We decided to reduce our MVP down quite a bit to just displaying top, new, and best stories with a maximum of ten stories per category. One of the most difficult aspects to the project was using the openGraphAPI to fetch images from each article URL to display it as a preview on our HN website. We used this API to give it the URL of the article, and reach out to that URL to locate an image, and bring it back as an object that we could work with. Getting used to this API was difficult, but eventually proved to be very beneficial. Also, the nested asynchronous fetching was very difficult - we didn't want to fetch everything on page-load, so we had to figure out when exactly to fetch a given group of articles. This presented a lot of problems, because when we would save an article, it was saving twice if it was clicked again, because our logic was checking to see if they were the same article, which because they were from separate fetches, they would always be different objects. 
+
 ## Looking Ahead
+
+Looking ahead, I know we'd like to have a more robust testing suite with more integration coverage - we ran into some major issues while integration testing on our final day and decided to leave it where it stood. Also, we were on the brink of implementing a light/dark mode toggler to our project, which we'd like to spend some time to finish up. Lastly, we would have loved to have had comments and jobs available on our website as well, but given the fact that we only had a week, we didn't have time to implement this. 
 
 ## The NEW Hacker News In Action
