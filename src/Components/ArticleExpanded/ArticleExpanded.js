@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { darkTheme } from "../../theme/globalStyle";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const {
   primaryPurple,
@@ -62,9 +62,15 @@ const BtnContainer = styled.section`
   display: flex;
   flex-direction: row;
   width: 100%;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const ArticleExpanded = (props) => {
+  console.log();
   const [isSaved, setIsSaved] = useState(false);
 
   const handleClick = () => {
@@ -76,11 +82,16 @@ const ArticleExpanded = (props) => {
     <Wrapper>
       <h2>{props.clickedArticle.title}</h2>
       <ImgContainer>
-        <img src={props.clickedArticle.image} />
+        <img
+          src={props.clickedArticle.image}
+          alt={props.clickedArticle.image}
+        />
       </ImgContainer>
       <p>{props.clickedArticle.description}</p>
       <BtnContainer>
-        <button>Read Article</button>
+        <button>
+          <a href={props.clickedArticle.url}>Read Article</a>
+        </button>
         <button onClick={handleClick}>
           {isSaved ? "Remove from Saved" : "Save this Article"}
         </button>
