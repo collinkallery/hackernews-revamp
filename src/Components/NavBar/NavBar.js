@@ -27,11 +27,15 @@ const NavBarTopStyled = styled.div`
   color: #ffffff;
 
   button {
-    border: none;
-    border-radius: 5px;
     background-color: ${secondaryTeal};
-    margin: 3%;
-    padding: 2%;
+    margin-right: 0.2em;
+    border: none;
+    padding: 4%;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px ${surface};
+    border-radius: 2px;
   }
 `;
 
@@ -50,9 +54,11 @@ const TopicLinkStyled = styled(Link)`
   text-align: center;
   text-decoration: none;
   color: white;
+  border-bottom: 1px solid ${secondaryTeal};
   &:focus {
     border-left: 1px solid ${surface};
     border-right: 1px solid ${surface};
+    border-bottom: none;
     color: white;
   }
 `;
@@ -61,15 +67,19 @@ const HomeLinkStyled = styled(Link)`
   text-decoration: none;
   color: inherit;
   font-size: 32px;
-  padding: 1.5%;
+  padding: 1.2%;
   border: 1px solid ${surface};
+  letter-spacing: 0.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const NavBar = (props) => {
   return (
     <NavBarStyled>
       <NavBarTopStyled>
-        <HomeLinkStyled to="/">H N</HomeLinkStyled>
+        <HomeLinkStyled to="/">HN</HomeLinkStyled>
         <h2>Headlines</h2>
         {props.user && (
           <p>
@@ -77,9 +87,7 @@ const NavBar = (props) => {
           </p>
         )}
         <Link to="/login">
-          <button>
-            {props.user ? "Logout" : "Login"}
-          </button>
+          <button>{props.user ? "Logout" : "Login"}</button>
         </Link>
       </NavBarTopStyled>
       <NavBarBottomStyled>
