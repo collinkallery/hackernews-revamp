@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { fetchImage } from "../../apiCalls";
 import { darkTheme } from "../../theme/globalStyle";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const {
   primaryPurple,
@@ -53,10 +53,7 @@ const ArticlePreview = (props) => {
   // refactor if/else into ternary
   fetchImage(props.url).then((data) => {
     let imageUrl = "";
-    if (
-      data ===
-      "https://cdn.windowsreport.com/wp-content/uploads/2018/07/Error-message-1.jpg"
-    ) {
+    if (data === `../../theme/HN.png`) {
       imageUrl = data;
       description = "No image to display";
     } else {

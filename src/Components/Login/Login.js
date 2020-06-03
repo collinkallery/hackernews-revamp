@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
@@ -15,31 +14,31 @@ const {
 } = darkTheme;
 
 const Login = (props) => {
-  // const { register } = useForm();
+
+  // const Wrapper = styled.div`
+  //   display: flex;
+  //   flex-direction: column;
+  //   padding: 4%;
+
+  //   button {
+  //   background-color: ${secondaryTeal};
+  //   margin: 2%;
+  //   border: none;
+  //   padding: 1%;
+  //   font-size: .8em;
+  //   border-radius: 2px;
+  //   text-transform: uppercase;
+  //   font-weight: bold;
+  //   box-shadow: 1px 1px 1px ${surface};
+  // }
+  //   }
+  // `;
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [purpose, setPurpose] = useState("");
   const [error, setError] = useState("");
 
-  const Wrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    padding: 4%;
-
-    button {
-    background-color: ${secondaryTeal};
-    margin: 2%;
-    border: none;
-    padding: 1%;
-    font-size: .8em;
-    border-radius: 2px;
-    text-transform: uppercase;
-    font-weight: bold;
-    box-shadow: 1px 1px 1px ${surface};
-  }
-    }
-  `;
   
   const checkInputs = () => {
     return username !== "" && password !== "" && purpose !== "";
@@ -56,7 +55,8 @@ const Login = (props) => {
 
 
   return (
-    <Wrapper>
+    // <Wrapper>
+    <div>
       <h2>Login to HN Mobile Account</h2>
       <form>
         <label htmlFor="email">Enter your username: </label>
@@ -65,7 +65,6 @@ const Login = (props) => {
           name="email"
           id="username"
           placeholder="username"
-          // ref={register}
           onChange={(e) => setUsername(e.target.value)}
         />
         <br />
@@ -75,7 +74,6 @@ const Login = (props) => {
           name="password"
           id="password"
           placeholder="password"
-          // ref={register}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
@@ -84,7 +82,6 @@ const Login = (props) => {
         </label>
         <select
           id="purpose"
-          // ref={register}
           onChange={(e) => setPurpose(e.target.value)}
         >
           <option value="''"> - Please choose a purpose - </option>
@@ -99,7 +96,8 @@ const Login = (props) => {
           <button onClick={handleClick}>Login</button>
         </Link>
       </form>
-    </Wrapper>
+      </div>
+
   );
 };
 
