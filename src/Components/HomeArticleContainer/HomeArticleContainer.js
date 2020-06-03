@@ -2,6 +2,7 @@ import React from "react";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import styled from "styled-components";
 import { darkTheme } from "../../theme/globalStyle";
+import PropTypes from 'prop-types';
 
 const {
   primaryPurple,

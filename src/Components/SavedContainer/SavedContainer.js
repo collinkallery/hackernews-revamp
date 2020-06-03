@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { darkTheme } from "../../theme/globalStyle";
 import ArticlePreview from "../ArticlePreview/ArticlePreview";
+import PropTypes from "prop-types";
 
 const {
   primaryPurple,
@@ -50,6 +51,10 @@ const SavedContainer = (props) => {
     }
   };
   return <Wrapper>{innerText()}</Wrapper>;
+};
+
+SavedContainer.propTypes = {
+  savedArticles: PropTypes.array,
 };
 
 export default SavedContainer;

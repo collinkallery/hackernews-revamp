@@ -126,7 +126,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={darkTheme}>
         <Wrapper>
-          <NavBar />
+          <NavBar user={this.props.user} />
           <Route
             exact
             path="/about"
@@ -184,11 +184,10 @@ class App extends Component {
             path="/login"
             exact
             render={() => {
-              return <Login setUser={this.setUser} user={this.state.user} />;
               return (
-                <ArticleExpanded
-                  updateSavedArticles={this.updateSavedArticles}
-                  clickedArticle={this.state.clickedArticle}
+                <Login
+                  setUser={this.setUser}
+                  resetUser={this.resetUser}
                 />
               );
             }}

@@ -3,6 +3,7 @@ import ArticlePreview from "../ArticlePreview/ArticlePreview";
 import { fetchStories } from "../../apiCalls";
 import styled from "styled-components";
 import { darkTheme } from "../../theme/globalStyle";
+import PropTypes from 'prop-types';
 
 const {
   primaryPurple,

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { darkTheme } from "../../theme/globalStyle";
+import PropTypes from "prop-types";
 
 const {
   primaryPurple,
@@ -101,4 +102,7 @@ const NavBar = (props) => {
   );
 };
 
+NavBar.propTypes = {
+  user: PropTypes.object,
+};
 export default NavBar;

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
+import PropTypes from "prop-types";
 
 const {
   primaryPurple,
@@ -14,25 +15,12 @@ const {
 } = darkTheme;
 
 const Login = (props) => {
-  const { register } = useForm();
+  // const { register } = useForm();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [purpose, setPurpose] = useState("");
   const [error, setError] = useState("");
-
-  const checkInputs = () => {
-    return username !== "" && password !== "" && purpose !== "";
-  };
-
-  const handleClick = () => {
-    checkInputs()
-      ? props.setUser({
-          username: username,
-          purpose: purpose,
-        })
-      : setError("Please complete all inputs to login.");
-  };
 
   const Wrapper = styled.div`
     display: flex;
@@ -52,6 +40,20 @@ const Login = (props) => {
   }
     }
   `;
+  
+  const checkInputs = () => {
+    return username !== "" && password !== "" && purpose !== "";
+  };
+
+  const handleClick = () => {
+    checkInputs()
+      ? props.setUser({
+          username: username,
+          purpose: purpose,
+        })
+      : setError("Please complete all inputs to login.");
+  };
+
 
   return (
     <Wrapper>
@@ -63,7 +65,7 @@ const Login = (props) => {
           name="email"
           id="username"
           placeholder="username"
-          ref={register}
+          // ref={register}
           onChange={(e) => setUsername(e.target.value)}
         />
         <br />
@@ -73,7 +75,7 @@ const Login = (props) => {
           name="password"
           id="password"
           placeholder="password"
-          ref={register}
+          // ref={register}
           onChange={(e) => setPassword(e.target.value)}
         />
         <br />
@@ -82,7 +84,7 @@ const Login = (props) => {
         </label>
         <select
           id="purpose"
-          ref={register}
+          // ref={register}
           onChange={(e) => setPurpose(e.target.value)}
         >
           <option value="''"> - Please choose a purpose - </option>
@@ -99,6 +101,11 @@ const Login = (props) => {
       </form>
     </Wrapper>
   );
+};
+
+Login.propTypes = {
+  setUser: PropTypes.func,
+  resetUser: PropTypes.func,
 };
 
 export default Login;
