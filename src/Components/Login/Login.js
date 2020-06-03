@@ -38,7 +38,7 @@ const Login = (props) => {
           name="email"
           id="username"
           placeholder="username"
-          ref={register}
+          // ref={register}
           onChange={(e) => setUsername(e.target.value)}
         />
         <label htmlFor="password">Enter your password:</label>
@@ -47,7 +47,7 @@ const Login = (props) => {
           name="password"
           id="password"
           placeholder="password"
-          ref={register}
+          // ref={register}
           onChange={(e) => setPassword(e.target.value)}
         />
         <label htmlFor="purpose">
@@ -55,7 +55,7 @@ const Login = (props) => {
         </label>
         <select
           id="purpose"
-          ref={register}
+          // ref={register}
           onChange={(e) => setPurpose(e.target.value)}
         >
           <option value="''"> - Please choose a purpose - </option>
