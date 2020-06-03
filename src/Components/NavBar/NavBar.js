@@ -25,7 +25,7 @@ const NavBarTopStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  color: #ffffff;
+  color: ${surface};
 
   button {
     background-color: ${secondaryTeal};
@@ -96,7 +96,7 @@ const NavBar = (props) => {
         <TopicLinkStyled to="/articles/Newest">New</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Best">Best</TopicLinkStyled>
         <TopicLinkStyled to="/articles/Top">Top</TopicLinkStyled>
-        <TopicLinkStyled to="/articles/Saved">Saved</TopicLinkStyled>
+        <TopicLinkStyled to="/Saved">Saved</TopicLinkStyled>
       </NavBarBottomStyled>
     </NavBarStyled>
   );
@@ -105,4 +105,5 @@ const NavBar = (props) => {
 NavBar.propTypes = {
   user: PropTypes.object,
 };
+
 export default NavBar;
