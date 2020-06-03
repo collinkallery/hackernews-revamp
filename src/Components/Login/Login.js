@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { GlobalStyle, darkTheme, lightTheme } from "../../theme/globalStyle";
 
-// set user
-// pass user down to NavBar thru props
-// add username and purpose to NavBar
-// change login to logout
+const {
+  primaryPurple,
+  primaryBlue,
+  secondaryTeal,
+  background,
+  surface,
+  error,
+} = darkTheme;
 
 const Login = (props) => {
   const { register } = useForm();
@@ -28,11 +34,30 @@ const Login = (props) => {
       : setError("Please complete all inputs to login.");
   };
 
+  const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 4%;
+
+    button {
+    background-color: ${secondaryTeal};
+    margin: 2%;
+    border: none;
+    padding: 1%;
+    font-size: .8em;
+    border-radius: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 1px 1px 1px ${surface};
+  }
+    }
+  `;
+
   return (
-    <div>
+    <Wrapper>
       <h2>Login to HN Mobile Account</h2>
       <form>
-        <label htmlFor="email">Enter your username:</label>
+        <label htmlFor="email">Enter your username: </label>
         <input
           type="text"
           name="email"
@@ -41,7 +66,8 @@ const Login = (props) => {
           ref={register}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="password">Enter your password:</label>
+        <br />
+        <label htmlFor="password">Enter your password: </label>
         <input
           type="text"
           name="password"
@@ -50,6 +76,7 @@ const Login = (props) => {
           ref={register}
           onChange={(e) => setPassword(e.target.value)}
         />
+        <br />
         <label htmlFor="purpose">
           Good hackers only. What type of hacker are you?
         </label>
@@ -70,7 +97,7 @@ const Login = (props) => {
           <button onClick={handleClick}>Login</button>
         </Link>
       </form>
-    </div>
+    </Wrapper>
   );
 };
 
